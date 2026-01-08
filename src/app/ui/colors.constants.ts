@@ -13,4 +13,9 @@ export const OfficialColors = {
   default_bg_color: 'bg-zinc-50 dark:bg-zinc-900',
   default_border_color: 'border-zinc-200 dark:border-zinc-700',
 
+  tooltip_bg_color: 'bg-zinc-950/90 dark:bg-zinc-800/95 backdrop-blur-md border-zinc-800 dark:border-zinc-700',
+  tooltip_text_color: 'text-white dark:text-zinc-100',
+
+  menu_bg_color: 'bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-zinc-200 dark:border-zinc-800',
+  menu_item_hover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800',
 }

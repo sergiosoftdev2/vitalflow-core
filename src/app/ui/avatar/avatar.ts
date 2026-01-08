@@ -8,7 +8,10 @@ import { AVATAR_SIZES, AVATAR_VARIANT_CLASSES, BASE_AVATAR_CLASSES } from "./ava
   selector: 'app-avatar',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './avatar.html'
+  templateUrl: './avatar.html',
+  host: {
+    'class': 'inline-block'
+  }
 })
 export class AvatarComponent {
   src = input<string>('');

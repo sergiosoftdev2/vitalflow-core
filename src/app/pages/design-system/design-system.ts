@@ -6,6 +6,7 @@ import { AvatarGroupComponent } from '../../ui/avatar-group/avatar-group';
 import { InputSearchComponent } from '../../ui/input-search/input-search';
 import { BadgeComponent } from '../../ui/badge/badge';
 import { TagComponent } from '../../ui/tag/tag';
+import { TooltipDirective } from '../../ui/tooltip/tooltip.directive';
 
 @Component({
   selector: 'app-design-system',
@@ -17,7 +18,8 @@ import { TagComponent } from '../../ui/tag/tag';
     AvatarGroupComponent, 
     InputSearchComponent,
     BadgeComponent,
-    TagComponent
+    TagComponent,
+    TooltipDirective
   ],
   templateUrl: './design-system.html',
 })

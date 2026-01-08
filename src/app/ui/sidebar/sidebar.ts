@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { 
-  faChartPie, 
   faUsers, 
-  faKey, 
   faSearch, 
   faBars, 
   faChartLine,
   faCalendar,
-  faUsersBetweenLines
+  faUsersBetweenLines,
+  faBuilding
 } from '@fortawesome/free-solid-svg-icons';
 import { LayoutService } from '../../services/layout.service';
 import { SidebarItem } from './sidebar.enum';
@@ -43,7 +42,7 @@ export class SidebarComponent {
   faBars = faBars;
 
   menuItems: SidebarItem[] = [
-    { label: 'Vista General', icon: faChartPie, route: '/dashboard' },
+    { label: 'Mi Clínica', icon: faBuilding, route: '/dashboard' },
     { label: 'Agenda', icon: faCalendar, route: '/dashboard/api' },
     { 
       label: 'Mi equipo', 

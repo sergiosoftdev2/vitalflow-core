@@ -17,5 +17,5 @@ export const BASE_AVATAR_CLASSES = `
   flex items-center justify-center overflow-hidden 
   bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400
   border-2 border-white dark:border-zinc-950
-  transition-all duration-300 ease-in-out hover:scale-110 select-none
+  transition-all duration-300 ease-in-out
 `;

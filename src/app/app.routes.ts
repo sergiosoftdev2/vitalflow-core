@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard, publicGuard } from './guards/auth.guard';
-import { LoginComponent } from './pages/auth/login/login';
-import { RegisterComponent } from './pages/auth/register/register.component';
 import { DashboardLayoutComponent } from './layout/dashboard-layout.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/auth/login/login';
 
 export const routes: Routes = [
   {
@@ -18,11 +16,7 @@ export const routes: Routes = [
   {
     path: 'auth',
     canActivate: [publicGuard],
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' }
-    ]
+    loadChildren: () => import('./pages/auth/auth.routes').then(m => m.AUTH_ROUTES)
   },
   {
     path: 'success',
@@ -33,13 +27,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardLayoutComponent,
     canActivate: [authGuard],
-    children: [
-      { path: '', component: DashboardComponent },
-      { path: 'positions', component: DashboardComponent }, // Placeholder
-      { path: 'branding', component: DashboardComponent },  // Placeholder
-      { path: 'team', component: DashboardComponent },      // Placeholder
-      { path: 'api', component: DashboardComponent }       // Placeholder
-    ]
+    loadChildren: () => import('./pages/dashboard/dashboard.routes').then(m => m.DASHBOARD_ROUTES)
   },
   {
     path: '**',
