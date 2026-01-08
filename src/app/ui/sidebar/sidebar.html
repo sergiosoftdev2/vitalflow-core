@@ -27,7 +27,7 @@
       <fa-icon 
         [icon]="item.icon" 
         [class.text-green-500]="rla.isActive"
-        class="text-zinc-400 group-hover:text-white transition-colors"
+        class="transition-colors"
       ></fa-icon>
       
       <span class="flex-1 text-sm font-medium">{{ item.label }}</span>
@@ -67,5 +67,5 @@
 <div 
   *ngIf="layoutService.isSidebarOpen()" 
   (click)="layoutService.closeSidebar()"
-  class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+  class="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-40 lg:hidden"
 ></div>

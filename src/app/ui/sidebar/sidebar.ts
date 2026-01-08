@@ -4,12 +4,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { 
   faChartPie, 
-  faBriefcase, 
-  faPalette, 
   faUsers, 
   faKey, 
   faSearch, 
-  faBars 
+  faBars, 
+  faChartLine,
+  faCalendar,
+  faUsersBetweenLines
 } from '@fortawesome/free-solid-svg-icons';
 import { LayoutService } from '../../services/layout.service';
 import { SidebarItem } from './sidebar.enum';
@@ -42,20 +43,20 @@ export class SidebarComponent {
   faBars = faBars;
 
   menuItems: SidebarItem[] = [
-    { label: 'Overview', icon: faChartPie, route: '/dashboard' },
+    { label: 'Vista General', icon: faChartPie, route: '/dashboard' },
+    { label: 'Agenda', icon: faCalendar, route: '/dashboard/api' },
     { 
-      label: 'Positions', 
-      icon: faBriefcase, 
+      label: 'Mi equipo', 
+      icon: faUsers, 
       route: '/dashboard/positions',
       badge: { value: 8, color: 'primary' }
     },
     { 
-      label: 'Branding', 
-      icon: faPalette, 
+      label: 'Informes', 
+      icon: faChartLine, 
       route: '/dashboard/branding',
       badge: { value: 'New', color: 'success' }
     },
-    { label: 'Team Management', icon: faUsers, route: '/dashboard/team' },
-    { label: 'API Key', icon: faKey, route: '/dashboard/api' }
+    { label: 'Clientes', icon: faUsersBetweenLines, route: '/dashboard/api' }
   ];
 }
