@@ -1,0 +1,11 @@
+<span [ngClass]="classes()">
+  <ng-content></ng-content>
+  
+  <button 
+    *ngIf="removable()" 
+    (click)="remove($event)"
+    class="hover:bg-black/10 dark:hover:bg-white/10 rounded-full p-0.5 transition-colors flex items-center justify-center"
+  >
+    <fa-icon [icon]="faTimes" class="text-[10px]"></fa-icon>
+  </button>
+</span>

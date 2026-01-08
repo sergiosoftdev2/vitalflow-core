@@ -1,0 +1,43 @@
+<div class="h-dvh w-full overflow-hidden flex flex-col gap-4 justify-end md:items-center md:justify-center dark:bg-zinc-950">
+  <div class="space-y-2">
+    <app-card addiotionalClasses="w-full md:w-[400px] rounded-t-3xl rounded-b-none md:rounded-2xl border-x-0 border-b-0 md:border-x md:border-b flex flex-col gap-4">
+      <div class="w-full flex flex-col gap-2">
+        <app-input-text 
+          label="Correo Electrónico" 
+          placeholder="ejemplo@correo.com" 
+          [(value)]="email"
+        ></app-input-text>
+        
+        <app-input-password 
+          label="Contraseña" 
+          placeholder="••••••••"
+          [(value)]="password"
+        ></app-input-password>
+      </div>
+
+      <section class="flex flex-col gap-2 w-full">
+        <app-button leadingIcon="fa-solid fa-door-open" label="Iniciar Sesión" [isFullWidth]="true" size="lg"></app-button>
+        <hr class="w-full my-2 border-zinc-200 dark:border-zinc-600">
+        <app-button 
+          leadingIcon="fa-brands fa-google" 
+          label="Iniciar Sesión con Google" 
+          color="secondary" 
+          [isFullWidth]="true" 
+          size="lg"
+          (handler)="onGoogleLogin()"
+        />
+      </section>
+      <div class="text-zinc-600 dark:text-zinc-400 text-sm">O puedes <a routerLink="/auth/register" class="text-blue-500 text-sm">Registrarte aquí</a>.</div>
+    </app-card>
+    
+  </div>
+
+
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-zinc-50/50 dark:bg-zinc-950/0">
+    <div class="absolute -top-[10%] left-[20%] w-[40rem] h-[40rem] rounded-full bg-green-500/20 dark:bg-green-500/10 blur-[100px] animate-pulse"></div>
+    <div class="absolute top-[30%] -right-[10%] w-[35rem] h-[35rem] rounded-full bg-teal-500/20 dark:bg-teal-500/10 blur-[100px] animate-pulse delay-1000"></div>
+    <div class="absolute -bottom-[10%] left-[10%] w-[50rem] h-[50rem] rounded-full bg-emerald-500/20 dark:bg-emerald-500/10 blur-[120px] animate-pulse delay-700"></div>
+    
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808020_1px,transparent_1px),linear-gradient(to_bottom,#80808020_1px,transparent_1px)] opacity-20 bg-[size:24px_24px]"></div>
+  </div>
+</div>

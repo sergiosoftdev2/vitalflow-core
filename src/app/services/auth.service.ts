@@ -1,30 +1,43 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { SessionService } from './session.service';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  currentUser = signal<{ name: string; email: string } | null>(null);
+  private sessionService = inject(SessionService);
+  private router = inject(Router);
+  
+  // Expose signals from session service
+  currentUser = this.sessionService.user;
+  isAuthenticated = this.sessionService.isAuthenticated;
 
   private readonly apiUrl = environment.apiUrl;
 
-  constructor(private router: Router) {
-    const storedUser = localStorage.getItem('vyntal_user');
-    if (storedUser) {
-      this.currentUser.set(JSON.parse(storedUser));
-    }
-  }
-
   googleLogin() {
-    window.location.href = `${this.apiUrl}/google`;
+    window.location.href = `${this.apiUrl}/auth/google`;
   }
 
   login(email: string) {
-    const user = { name: 'Vyntal User', email };
-    this.currentUser.set(user);
-    localStorage.setItem('vyntal_user', JSON.stringify(user));
+    const user: User = {
+      _id: 'mock-id-' + Date.now(),
+      email,
+      firstName: 'User',
+      lastName: '',
+      picture: '',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    
+    this.sessionService.setUser(user);
+    this.router.navigate(['/dashboard']);
+  }
+
+  handleSocialLogin(user: User) {
+    this.sessionService.setUser(user);
     this.router.navigate(['/dashboard']);
   }
 
@@ -33,12 +46,8 @@ export class AuthService {
   }
 
   logout() {
-    this.currentUser.set(null);
-    localStorage.removeItem('vyntal_user');
+    this.sessionService.clearSession();
     this.router.navigate(['/auth/login']);
   }
-
-  isAuthenticated(): boolean {
-    return this.currentUser() !== null;
-  }
 }
+

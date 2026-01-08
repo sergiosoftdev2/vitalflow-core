@@ -39,6 +39,133 @@
     </div>
   </section>
 
-  <!-- Add other sections here as we discover more components -->
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- AVATARS -->
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Avatars</h2>
+    
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
+        <div class="flex flex-wrap gap-4 items-end">
+          <app-avatar src="https://i.pravatar.cc/150?u=1" size="sm"></app-avatar>
+          <app-avatar src="https://i.pravatar.cc/150?u=2" size="base"></app-avatar>
+          <app-avatar src="https://i.pravatar.cc/150?u=3" size="md"></app-avatar>
+          <app-avatar src="https://i.pravatar.cc/150?u=4" size="lg"></app-avatar>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Fallbacks & Variants</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <app-avatar initials="SG" size="md"></app-avatar>
+          <app-avatar initials="JD" size="md" variant="square"></app-avatar>
+          <app-avatar size="md"></app-avatar> <!-- Default icon fallback -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- AVATAR GROUP -->
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Avatar Group</h2>
+    
+    <div class="space-y-2">
+      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Animated Group</h3>
+      <app-avatar-group>
+        <app-avatar src="https://i.pravatar.cc/150?u=10"></app-avatar>
+        <app-avatar src="https://i.pravatar.cc/150?u=11"></app-avatar>
+        <app-avatar src="https://i.pravatar.cc/150?u=12"></app-avatar>
+        <app-avatar src="https://i.pravatar.cc/150?u=13"></app-avatar>
+        <app-avatar initials="+5"></app-avatar>
+      </app-avatar-group>
+    </div>
+  </section>
+
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- INPUTS -->
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Inputs</h2>
+    
+    <div class="space-y-4 max-w-sm">
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Search Input</h3>
+        <app-input-search placeholder="Search anything..."></app-input-search>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- BADGES -->
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Badges</h2>
+    
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants & Shapes</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <app-badge color="primary">8</app-badge>
+          <app-badge color="primary" variant="subtle">New</app-badge>
+          <app-badge color="destructive" shape="circle">1</app-badge>
+          <app-badge color="info" variant="outline">Update</app-badge>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Colors</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <app-badge color="primary">Primary</app-badge>
+          <app-badge color="secondary">Secondary</app-badge>
+          <app-badge color="success">Success</app-badge>
+          <app-badge color="destructive">Destructive</app-badge>
+          <app-badge color="info">Info</app-badge>
+          <app-badge color="warning">Warning</app-badge>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- TAGS -->
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tags</h2>
+    
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <app-tag color="primary" variant="filled">React</app-tag>
+          <app-tag color="primary" variant="subtle">Angular</app-tag>
+          <app-tag color="primary" variant="outline">Vue</app-tag>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Removable</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <app-tag color="secondary" [removable]="true">TypeScript</app-tag>
+          <app-tag color="destructive" [removable]="true" variant="subtle">Deleting...</app-tag>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Colors</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <app-tag color="primary">Primary</app-tag>
+          <app-tag color="secondary">Secondary</app-tag>
+          <app-tag color="success">Success</app-tag>
+          <app-tag color="destructive">Destructive</app-tag>
+          <app-tag color="info">Info</app-tag>
+          <app-tag color="warning">Warning</app-tag>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </div>

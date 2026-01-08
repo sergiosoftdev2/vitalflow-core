@@ -1,0 +1,10 @@
+<div [class]="containerClasses">
+  <fa-icon [icon]="faSearch" [class]="iconClasses"></fa-icon>
+  <input
+    type="text"
+    [placeholder]="placeholder()"
+    [class]="inputClasses"
+    [value]="value()"
+    (input)="onInput($event)"
+  />
+</div>
