@@ -1,0 +1,14 @@
+<button 
+  [ngClass]="buttonClasses()" 
+  (click)="onHandlerClick($event)"
+>
+  @if (leadingIcon()) {
+    <i [ngClass]="leadingIcon()"></i>
+  }
+  @if (label()) {
+    <span >{{ label() }}</span>
+  }
+  @if (trailingIcon()) {
+    <i [ngClass]="trailingIcon()"></i>
+  }
+</button>

@@ -1,0 +1,13 @@
+<div [class]="inputContainerClasses">
+  @if (label()) {
+    <label [for]="id()" [class]="labelClasses">{{ label() }}</label>
+  }
+  <input
+    type="number"
+    [id]="id()"
+    [placeholder]="placeholder()"
+    [class]="inputClasses()"
+    [value]="value()"
+    (input)="onInput($event)"
+  />
+</div>
