@@ -280,4 +280,127 @@
     </div>
   </section>
 
+  <hr class="border-zinc-200 dark:border-zinc-800">
+  
+  <!-- TABLES -->
+  <section class="space-y-4 pb-20">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tables</h2>
+    
+    <div class="space-y-8">
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Default Table</h3>
+        <app-table [columns]="tableColumns" [data]="tableData"></app-table>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Custom Cell Template</h3>
+        <app-table [columns]="tableColumns" [data]="tableData" (rowClick)="tableData[0]">
+          <ng-template #cellTemplate let-row let-column="column">
+            @if (column.key === 'user') {
+              <div class="flex items-center gap-3">
+                <app-avatar [src]="row.user" size="sm" />
+                <div class="flex flex-col">
+                  <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ row.user_label }}</span>
+                  <span class="text-xs text-zinc-500">{{ row.email }}</span>
+                </div>
+              </div>
+            } @else if (column.key === 'role') {
+              <app-badge [color]="row.role === 'Administrador' ? 'primary' : 'secondary'">{{ row.role }}</app-badge>
+            } @else if (column.key === 'status') {
+              <app-tag [color]="row.status === 'Activo' ? 'success' : 'destructive'">{{ row.status }}</app-tag>
+            } @else if (column.key === 'actions') {
+              <div class="flex justify-end gap-2">
+                <app-button size="sm" variant="ghost">Ver</app-button>
+                <app-button size="sm" variant="ghost">Editar</app-button>
+              </div>
+            } @else if (column.key !== 'email') {
+              {{ row[column.key] }}
+            }
+          </ng-template>
+        </app-table>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Loading State</h3>
+        <app-table [columns]="tableColumns" [data]="[]" [isLoading]="true"></app-table>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Empty State</h3>
+        <app-table [columns]="tableColumns" [data]="[]" emptyMessage="No hay usuarios registrados actualmente"></app-table>
+      </div>
+    </div>
+  </section>
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- MODALS -->
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Modals</h2>
+    
+    <div class="flex flex-wrap gap-4">
+      <app-button label="Abrir Modal Simple" (click)="isModalOpen = true"></app-button>
+      <app-button label="Abrir Modal con 2 Botones" variant="outlined" (click)="isModalWithTwoButtonsOpen = true"></app-button>
+    </div>
+
+    <!-- Simple Modal Demo -->
+    <app-modal 
+      [isOpen]="isModalOpen" 
+      title="Confirmar Acción"
+      description="¿Estás seguro de que deseas realizar esta operación? Esta acción no se puede deshacer."
+      primaryActionLabel="Confirmar"
+      (close)="isModalOpen = false"
+      (primaryAction)="isModalOpen = false"
+    >
+      <p>Aquí puedes poner cualquier contenido extra que necesites dentro del cuerpo del modal.</p>
+    </app-modal>
+
+    <!-- Two Buttons Modal Demo -->
+    <app-modal 
+      [isOpen]="isModalWithTwoButtonsOpen" 
+      title="Ajustes de Cuenta"
+      description="Modifica las preferencias de tu perfil y cuenta de usuario."
+      primaryActionLabel="Guardar Cambios"
+      secondaryActionLabel="Cancelar"
+      (close)="isModalWithTwoButtonsOpen = false"
+      (primaryAction)="isModalWithTwoButtonsOpen = false"
+      (secondaryAction)="isModalWithTwoButtonsOpen = false"
+    >
+      <div class="space-y-4 pt-2">
+        <div class="p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+          <p class="text-sm font-medium">Información de Seguridad</p>
+          <p class="text-xs text-zinc-500 mt-1">Tu contraseña fue actualizada hace 3 meses.</p>
+        </div>
+      </div>
+    </app-modal>
+  </section>
+
+  <hr class="border-zinc-200 dark:border-zinc-800">
+
+  <!-- TABS -->
+  <section class="space-y-4 pb-20">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tabs</h2>
+    
+    <div class="space-y-8">
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Fill Variant (Pills)</h3>
+        <app-tabs 
+          [items]="tabItems" 
+          [activeId]="activeTab" 
+          variant="fill"
+          (tabChange)="activeTab = $event"
+        ></app-tabs>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Line Variant</h3>
+        <app-tabs 
+          [items]="tabItems" 
+          [activeId]="activeTab" 
+          variant="line"
+          (tabChange)="activeTab = $event"
+        ></app-tabs>
+      </div>
+    </div>
+  </section>
+
 </div>

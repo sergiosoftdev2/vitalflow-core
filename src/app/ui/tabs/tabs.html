@@ -1,0 +1,21 @@
+<div [class]="containerClasses()">
+  @for (tab of items(); track tab.id) {
+    <button
+      type="button"
+      [class]="getItemClasses(tab.id)"
+      (click)="onTabClick(tab.id)"
+    >
+      @if (tab.icon) {
+        <fa-icon [icon]="tab.icon" class="text-xs"></fa-icon>
+      }
+      
+      <span>{{ tab.label }}</span>
+
+      @if (tab.badge !== undefined) {
+        <span [class]="getBadgeClasses(tab.id)">
+          {{ tab.badge }}
+        </span>
+      }
+    </button>
+  }
+</div>

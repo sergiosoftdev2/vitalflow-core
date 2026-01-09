@@ -1,6 +1,6 @@
-<article [class]="cardClass()" (click)="handleClick($event)" class="group">
+<article [class]="cardClass()" (click)="handleClick($event)" class="group flex flex-col gap-4">
   @if (title() || description()) {
-    <header class="mb-4">
+    <header>
       <div class="flex items-center gap-2">
         @if (title()) {
           <app-title [label]="title()!" size="md" weight="semibold"></app-title>
@@ -13,7 +13,7 @@
         }
       </div>
       @if (description()) {
-        <p class="text-zinc-500 text-sm">{{ description() }}</p>
+        <p class="text-zinc-500 mt-1 text-sm">{{ description() }}</p>
       }
     </header>
   }

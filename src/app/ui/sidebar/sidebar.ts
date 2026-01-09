@@ -59,12 +59,6 @@ export class SidebarComponent {
     { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
     { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
     { 
-      label: 'Mi equipo', 
-      icon: faUsers, 
-      route: '/dashboard/positions',
-      badge: { value: 8, color: 'primary' }
-    },
-    { 
       label: 'Informes', 
       icon: faChartLine, 
       route: '/dashboard/branding',

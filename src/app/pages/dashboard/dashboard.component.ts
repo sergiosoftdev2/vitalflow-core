@@ -16,7 +16,9 @@ import {
   ApexXAxis,
   ApexDataLabels,
   ApexStroke,
-  ApexFill
+  ApexFill,
+  ApexGrid,
+  ApexYAxis
 } from 'ng-apexcharts';
 import { AvatarComponent } from "../../ui/avatar/avatar";
 
@@ -27,6 +29,8 @@ export type ChartOptions = {
   stroke: ApexStroke;
   dataLabels: ApexDataLabels;
   fill: ApexFill;
+  grid?: ApexGrid;
+  yaxis?: ApexYAxis;
   colors: string[];
 };
 
@@ -98,61 +102,76 @@ export class DashboardComponent {
     },
   ]
 
-  public chartOptions: ChartOptions = {
-    series: [
-      {
-        name: "Ingresos",
-        data: [3100, 4000, 2800, 5100, 4200, 10900, 10000]
-      }
-    ],
-    chart: {
-      type: "area",
-      height: 240,
-      fontFamily: 'Inter, sans-serif',
-      toolbar: {
-        show: false
+    public chartOptions: ChartOptions = {
+      series: [
+        {
+          name: "Ingresos",
+          data: [3100, 4000, 2800, 5100, 4200, 10900, 10000, 12000, 15000, 18000, 20000, 22000]
+        }
+      ],
+      chart: {
+        type: "area",
+        height: 240,
+        fontFamily: 'Inter, sans-serif',
+        toolbar: {
+          show: false
+        },
+        zoom: {
+          enabled: true
+        },
+        sparkline: {
+          enabled: false
+        }
       },
-      zoom: {
-        enabled: true
-      },
-      sparkline: {
+      colors: ["#22c55e"],
+      dataLabels: {
         enabled: false
-      }
-    },
-    colors: ["#22c55e"],
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      curve: "smooth",
-      width: 2
-    },
-    fill: {
-      type: "gradient",
-      gradient: {
-        shadeIntensity: 1,
-        opacityFrom: 0.45,
-        opacityTo: 0.05,
-        stops: [20, 100]
-      }
-    },
-    xaxis: {
-      categories: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
-      axisBorder: {
+      },
+      stroke: {
+        curve: "smooth",
+        width: 2
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shadeIntensity: 1,
+          opacityFrom: 0.45,
+          opacityTo: 0.05,
+          stops: [20, 100]
+        }
+      },
+      xaxis: {
+        categories: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        labels: {
+          show: false
+        }
+      },
+      grid: {
         show: false
       },
-      axisTicks: {
-        show: false
-      },
-      labels: {
-        style: {
-          colors: '#a1a1aa',
-          fontSize: '10px',
-          fontWeight: 600
+      yaxis: {
+        show: true,
+        labels: {
+          show: true,
+          style: {
+            colors: '#94a3b8',
+            fontFamily: 'Inter, sans-serif'
+          }
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
         }
       }
-    }
-  };
+    };
 
 }
 

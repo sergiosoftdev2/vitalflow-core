@@ -21,9 +21,13 @@ export class TagComponent {
   faTimes = faTimes;
 
   classes = computed(() => {
+    const variant = this.variant();
+    const color = this.color();
+    const colorClasses = TAG_COLOR_CLASSES[variant]?.[color] || TAG_COLOR_CLASSES[variant]?.[TAG_COLORS.primary];
+    
     return [
       TAG_BASE_CLASSES,
-      TAG_COLOR_CLASSES[this.variant()][this.color()]
+      colorClasses
     ];
   });
 

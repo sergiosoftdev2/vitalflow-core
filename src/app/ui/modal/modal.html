@@ -1,0 +1,65 @@
+@if (isOpen()) {
+  <!-- Backdrop -->
+  <div 
+    @backdropAnimation
+    [class]="backdropClasses()" 
+    (click)="onClose()" 
+    class="fixed inset-0 z-100 bg-zinc-950/20 dark:bg-zinc-950/60 backdrop-blur-sm"
+  ></div>
+
+  <!-- Container -->
+  <div [class]="containerClasses()" (click)="onClose()">
+    
+    <!-- Modal Body -->
+    <div 
+      @modalAnimation
+      [class]="bodyClasses()" 
+      (click)="stopPropagation($event)"
+    >
+      
+      <!-- Header -->
+      <header [class]="headerClasses()">
+        <div class="flex flex-col gap-1">
+          @if (title()) {
+            <app-title [label]="title()!" size="xl" weight="semibold"></app-title>
+          }
+          @if (description()) {
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">{{ description() }}</p>
+          }
+        </div>
+        
+        <button [class]="closeBtnClasses()" (click)="onClose()" aria-label="Cerrar modal">
+          <fa-icon [icon]="faTimes"></fa-icon>
+        </button>
+      </header>
+
+      <!-- Content -->
+      <div [class]="contentClasses()">
+        <ng-content></ng-content>
+      </div>
+
+      <!-- Footer -->
+      @if (primaryActionLabel() || secondaryActionLabel()) {
+        <footer [class]="footerClasses()">
+          @if (primaryActionLabel()) {
+            <app-button 
+              [label]="primaryActionLabel()!" 
+              (click)="onPrimaryAction()"
+              size="base"
+            ></app-button>
+          }
+          
+          @if (secondaryActionLabel()) {
+            <app-button 
+              [label]="secondaryActionLabel()!" 
+              variant="outlined" 
+              (click)="onSecondaryAction()"
+              size="base"
+            ></app-button>
+          }
+        </footer>
+      }
+    </div>
+  </div>
+}
+

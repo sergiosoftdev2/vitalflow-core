@@ -1,0 +1,76 @@
+<div [class]="containerClasses()">
+  <div class="overflow-x-auto">
+    <table [class]="tableClasses()">
+      <thead [class]="headerClasses()">
+        <tr>
+          @for (col of columns(); track col.key) {
+            <th 
+              scope="col" 
+              [class]="headerCellClasses()"
+              [ngClass]="getCellAlignment(col.align)"
+            >
+              {{ col.label }}
+            </th>
+          }
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
+        @if (!isLoading() && data().length > 0) {
+          @for (row of data(); track $index) {
+            <tr 
+              [class]="rowClasses()" 
+              (click)="onRowClick(row)"
+              [class.cursor-pointer]="rowClick.observed"
+            >
+              @for (col of columns(); track col.key) {
+                <td 
+                  [class]="cellClasses()"
+                  [ngClass]="getCellAlignment(col.align)"
+                >
+                  @if (cellTemplate) {
+                    <ng-container *ngTemplateOutlet="cellTemplate; context: { $implicit: row, column: col }"></ng-container>
+                  } @else {
+                    <!-- Render based on type -->
+                    @switch (col.type) {
+                      @case ('badge') {
+                        <app-badge color="primary" variant="subtle">
+                          {{ getCellValue(row, col.key) }}
+                        </app-badge>
+                      }
+                      @case ('avatar') {
+                        <div class="flex items-center gap-3">
+                          <app-avatar [src]="getCellValue(row, col.key)" size="sm" />
+                          <span class="font-medium">{{ getCellValue(row, col.key + '_label') || '' }}</span>
+                        </div>
+                      }
+                      @default {
+                        {{ getCellValue(row, col.key) }}
+                      }
+                    }
+                  }
+                </td>
+              }
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (isLoading()) {
+    <div class="flex flex-col items-center justify-center py-12 gap-3">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+      <p class="text-xs font-medium text-zinc-500 uppercase tracking-widest">Cargando datos...</p>
+    </div>
+  } @else if (data().length === 0) {
+    <div [class]="emptyStateClasses()">
+      <div class="w-16 h-16 rounded-2xl bg-zinc-100 dark:bg-zinc-800/50 flex items-center justify-center text-zinc-400 mb-4">
+        <svg class="w-8 h-8 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+        </svg>
+      </div>
+      <p class="font-medium text-zinc-900 dark:text-zinc-100">{{ emptyMessage() }}</p>
+      <p class="text-sm mt-1">Intenta ajustar los filtros o añadir nuevos registros.</p>
+    </div>
+  }
+</div>

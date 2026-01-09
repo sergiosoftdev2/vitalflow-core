@@ -1,6 +1,6 @@
 <div class="h-dvh w-full overflow-hidden flex flex-col gap-4 justify-end md:items-center md:justify-center dark:bg-zinc-950">
   <div class="space-y-2">
-    <app-card addiotionalClasses="w-full md:w-[400px] rounded-t-3xl rounded-b-none md:rounded-2xl border-x-0 border-b-0 md:border-x md:border-b flex flex-col gap-4">
+    <app-card additionalClasses="w-full md:w-[400px] rounded-t-3xl rounded-b-none md:rounded-2xl border-x-0 border-b-0 md:border-x md:border-b flex flex-col gap-4">
       <div class="w-full flex flex-col gap-2">
         <app-input-text 
           label="Correo Electrónico" 
@@ -16,14 +16,19 @@
       </div>
 
       <section class="flex flex-col gap-2 w-full">
-        <app-button leadingIcon="fa-solid fa-door-open" label="Iniciar Sesión" [isFullWidth]="true" size="lg"></app-button>
+        <app-button 
+          leadingIcon="fa-solid fa-door-open" 
+          label="Iniciar Sesión" 
+          [isFullWidth]="true" 
+          size="md"
+        ></app-button>
         <hr class="w-full my-2 border-zinc-200 dark:border-zinc-600">
         <app-button 
           leadingIcon="fa-brands fa-google" 
           label="Iniciar Sesión con Google" 
           color="secondary" 
           [isFullWidth]="true" 
-          size="lg"
+          size="md"
           (handler)="onGoogleLogin()"
         />
       </section>
