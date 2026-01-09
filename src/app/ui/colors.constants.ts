@@ -10,7 +10,7 @@ export const OfficialColors = {
   secondary_action: 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 hover:text-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50 active:bg-slate-300 active:text-slate-950 dark:active:bg-slate-700 dark:active:text-slate-50',
   destructive_action: 'text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-500 dark:hover:text-red-950 active:bg-red-700 active:text-white dark:active:bg-red-600 dark:active:text-red-950',
 
-  default_bg_color: 'bg-zinc-50 dark:bg-zinc-900',
+  default_bg_color: 'bg-white dark:bg-zinc-800',
   default_bg_hover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800',
   default_border_color: 'border-zinc-200 dark:border-zinc-700',
   default_border_hover: 'hover:border-zinc-300 dark:hover:border-zinc-600',

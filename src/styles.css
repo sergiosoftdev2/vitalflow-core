@@ -14,33 +14,21 @@ html, body {
   @apply antialiased bg-zinc-50 dark:bg-zinc-950;
 }
 
-/* Agenda Premium - Custom rounding for schedule-x */
-.sx__calendar-wrapper {
-  --sx-color-background: transparent;
-  --sx-color-border: theme('colors.zinc.200');
-  --sx-color-on-container: theme('colors.zinc.900');
-  --sx-border-radius-relative: 12px;
-  --sx-color-primary: theme('colors.blue.600');
-  --sx-color-primary-container: theme('colors.blue.50');
-  --sx-color-on-primary-container: theme('colors.blue.700');
+.ng-calendar-wrapper {
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+.sx__month-grid-wrapper {
+  flex-grow: 1;
+  height: 100%;
 }
 
-.dark .sx__calendar-wrapper {
-  --sx-color-border: theme('colors.zinc.800');
-  --sx-color-on-container: theme('colors.zinc.100');
-  --sx-color-primary: theme('colors.blue.500');
-  --sx-color-primary-container: theme('colors.blue.900/30');
-  --sx-color-on-primary-container: theme('colors.blue.300');
+.sx__month-grid-day {
+  min-height: 100px;
 }
 
-.sx__event {
-  @apply rounded-xl border-none shadow-sm font-medium;
-}
-
-.sx__view-container {
-  @apply border-none;
-}
-
-.sx__chevron-button, .sx__today-button, .sx__view-selection-button {
-  @apply rounded-2xl border-zinc-200 dark:border-zinc-800;
-}
+.sx__calendar {
+  @apply !border-zinc-200 dark:!border-zinc-600 !rounded-3xl;
+}@keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } } .animate-skeleton-shimmer { position: relative; overflow: hidden; @apply bg-zinc-200 dark:bg-zinc-800; } .animate-skeleton-shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; transform: translateX(-100%); background-image: linear-gradient( 90deg, transparent 0, rgba(255, 255, 255, 0.05) 20%, rgba(255, 255, 255, 0.2) 60%, transparent ); animation: shimmer 2s infinite ease-out; } .dark .animate-skeleton-shimmer::after { background-image: linear-gradient( 90deg, transparent 0, rgba(255, 255, 255, 0.02) 20%, rgba(255, 255, 255, 0.08) 60%, transparent ); }

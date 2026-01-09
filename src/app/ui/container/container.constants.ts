@@ -1,4 +1,3 @@
 export const PAGE_CONTAINER_CLASSES = `
-  w-full
-  animate-in fade-in slide-in-from-bottom-4 duration-500
+  w-full p-4 md:p-6 flex flex-col gap-4
 `;

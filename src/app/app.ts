@@ -3,6 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { Theme } from './enums/theme.enum';
 
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEs);
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],

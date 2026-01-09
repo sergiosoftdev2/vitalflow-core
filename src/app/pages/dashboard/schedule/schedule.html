@@ -1,3 +1,19 @@
-<app-page-container [isFullSize]="true">
-  <sx-calendar [calendarApp]="calendarApp" class="flex-1"></sx-calendar>
+<app-page-container [isFullSize]="true" [isOverflowHidden]="true" class="flex flex-col gap-4 h-full">
+  
+  <header class="flex justify-end items-center gap-4 w-full">
+    <app-title label="Agenda" size="2xl" class="mr-auto"></app-title>
+    <app-button [leadingIcon]="faCalendarPlus" color="secondary" label="Crear Evento"></app-button>
+    <app-button color="primary" label="Crear Evento"></app-button>
+  </header>
+  
+  <div (contextmenu)="handleRightClick($event)" class="flex-1 h-full min-h-0">
+    @defer (on timer(500ms)) {
+      <div (contextmenu)="handleRightClick($event)" class="flex-1 h-full">
+        <sx-calendar *ngIf="calendarApp" [calendarApp]="calendarApp"></sx-calendar>
+      </div>
+    } @placeholder {
+      <app-skeleton type="calendar"></app-skeleton>
+    }
+  </div>
+
 </app-page-container>

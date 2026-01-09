@@ -15,6 +15,13 @@ import { PAGE_CONTAINER_CLASSES } from "./container.constants";
 export class PageContainerComponent {
 
   isFullSize = input<boolean>(false);
+  additionalClasses = input<string>('');
+  isOverflowHidden = input<boolean>(false)
 
-  containerClasses = computed(() => PAGE_CONTAINER_CLASSES + (this.isFullSize() ? ' h-full w-full' : 'max-w-4xl mx-auto'));
+  containerClasses = computed(() => 
+    PAGE_CONTAINER_CLASSES + 
+    (this.isFullSize() ? ' h-dvh w-full' : 'max-w-4xl mx-auto min-h-dvh') + 
+    (this.isOverflowHidden() ? ' overflow-hidden ' : ' ') +
+    this.additionalClasses()
+  );
 }

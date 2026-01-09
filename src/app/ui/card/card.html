@@ -1,3 +1,21 @@
-<article [class]="cardClass()" (click)="handleClick($event)">
+<article [class]="cardClass()" (click)="handleClick($event)" class="group">
+  @if (title() || description()) {
+    <header class="mb-4">
+      <div class="flex items-center gap-3">
+        @if (title()) {
+          <app-title [label]="title()!" size="md" weight="semibold"></app-title>
+        }
+        @if (isClickable()) {
+          <fa-icon 
+            [icon]="faArrowRight" 
+            class="text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
+          ></fa-icon>
+        }
+      </div>
+      @if (description()) {
+        <p class="text-zinc-500 text-sm mt-1">{{ description() }}</p>
+      }
+    </header>
+  }
   <ng-content></ng-content>
 </article>

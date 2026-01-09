@@ -21,10 +21,10 @@ export const coloredButtonColors = {
 }
 
 export const buttonSizes = {
-  [COMPONENT_SIZES.sm]: 'text-sm px-4 py-2',
-  [COMPONENT_SIZES.base]: 'text-sm px-3 py-2',
-  [COMPONENT_SIZES.md]: 'text-base px-4 py-2',
-  [COMPONENT_SIZES.lg]: 'text-lg px-6 py-3'
+  [COMPONENT_SIZES.sm]: 'h-8 text-sm px-4 py-2',
+  [COMPONENT_SIZES.base]: 'h-10 text-sm px-4 py-2',
+  [COMPONENT_SIZES.md]: 'h-12 text-base px-4 py-2',
+  [COMPONENT_SIZES.lg]: 'h-14 text-lg px-6 py-3'
 }
 
 export const BASE_CLASSES = `

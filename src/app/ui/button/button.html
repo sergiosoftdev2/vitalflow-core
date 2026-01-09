@@ -3,12 +3,20 @@
   (click)="onHandlerClick($event)"
 >
   @if (leadingIcon()) {
-    <i [ngClass]="leadingIcon()"></i>
+    @if (isIconDefinition(leadingIcon())) {
+      <fa-icon [icon]="$any(leadingIcon())"></fa-icon>
+    } @else {
+      <i [ngClass]="leadingIcon()"></i>
+    }
   }
   @if (label()) {
     <span >{{ label() }}</span>
   }
   @if (trailingIcon()) {
-    <i [ngClass]="trailingIcon()"></i>
+    @if (isIconDefinition(trailingIcon())) {
+      <fa-icon [icon]="$any(trailingIcon())"></fa-icon>
+    } @else {
+      <i [ngClass]="trailingIcon()"></i>
+    }
   }
 </button>

@@ -21,7 +21,6 @@ export class DashboardLayoutComponent implements OnInit {
   faBell = faBell;
 
   ngOnInit() {
-    // Abrir sidebar por defecto en desktop
     if (window.innerWidth >= 1024) {
       this.layoutService.openSidebar();
     }

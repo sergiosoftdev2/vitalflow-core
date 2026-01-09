@@ -1,0 +1,33 @@
+<app-page-container [isOverflowHidden]="true" additionalClasses="md:justify-center">
+  <header>
+    <app-title [label]="title" size="2xl"></app-title>
+    <p class="text-zinc-500 text-sm sm:text-base mt-1">Resumen general de tu actividad y métricas.</p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+
+    <!-- Balance Card -->
+    <app-card 
+      class="md:col-span-6" 
+      title="Monedero" 
+      description="Dinero total disponible"
+      [isClickable]="true"
+      routerLink="/dashboard/wallet"
+    >
+      <div class="flex items-center justify-between group">
+        <div class="flex items-baseline gap-1">
+          <span class="text-4xl font-bold dark:text-zinc-50">{{ balance | number:'1.2-2' }}</span>
+          <span class="text-xl font-semibold text-green-600 dark:text-green-500">€</span>
+        </div>
+        <div class="w-12 h-12 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-600 dark:text-green-500 group-hover:scale-110 transition-transform">
+          <fa-icon [icon]="faWallet" class="text-xl"></fa-icon>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card class="md:cols-span-4">
+      
+    </app-card>
+
+  </div>
+</app-page-container>

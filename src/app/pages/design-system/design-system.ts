@@ -9,6 +9,8 @@ import { TagComponent } from '../../ui/tag/tag';
 import { TooltipDirective } from '../../ui/tooltip/tooltip.directive';
 import { ContextMenuDirective } from '../../ui/context-menu/context-menu.directive';
 import { faEdit, faTrash, faShare, faCopy, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { SkeletonComponent } from '../../ui/skeleton/skeleton';
+import { TitleComponent } from '../../ui/title/title';
 
 @Component({
   selector: 'app-design-system',
@@ -22,7 +24,9 @@ import { faEdit, faTrash, faShare, faCopy, faExternalLinkAlt } from '@fortawesom
     BadgeComponent,
     TagComponent,
     TooltipDirective,
-    ContextMenuDirective
+    ContextMenuDirective,
+    SkeletonComponent,
+    TitleComponent
   ],
   templateUrl: './design-system.html',
 })

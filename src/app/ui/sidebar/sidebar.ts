@@ -11,7 +11,8 @@ import {
   faUsersBetweenLines,
   faBuilding,
   faUser,
-  faSignOut
+  faSignOut,
+  faChartPie
 } from '@fortawesome/free-solid-svg-icons';
 import { LayoutService } from '../../services/layout.service';
 import { SidebarItem } from './sidebar.enum';
@@ -32,7 +33,7 @@ import { ButtonComponent } from "../button/button";
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, ContextMenuDirective, FontAwesomeModule, InputSearchComponent, BadgeComponent, AvatarComponent, ButtonComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ContextMenuDirective, FontAwesomeModule, InputSearchComponent, BadgeComponent, AvatarComponent],
   templateUrl: './sidebar.html'
 })
 export class SidebarComponent {
@@ -54,7 +55,8 @@ export class SidebarComponent {
   ];
 
   menuItems: SidebarItem[] = [
-    { label: 'Mi Clínica', icon: faBuilding, route: '/dashboard' },
+    { label: 'Vista general', icon: faChartPie, route: '/dashboard' },
+    { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
     { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
     { 
       label: 'Mi equipo', 
@@ -72,7 +74,13 @@ export class SidebarComponent {
   ];
 
   openProfile() {
+    this.onItemClick();
     this.router.navigate(['dashboard/profile']);
   }
 
+  onItemClick() {
+    if (window.innerWidth < 1024) {
+      this.layoutService.closeSidebar();
+    }
+  }
 }

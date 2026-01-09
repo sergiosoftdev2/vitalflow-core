@@ -1,6 +1,6 @@
 export const SIDEBAR_BASE_CLASSES = `
-  fixed top-0 left-0 h-screen w-72  
-  flex flex-col p-6 border-r bg-zinc-50 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-600 rounded-r-4xl
+  fixed top-0 left-0 h-screen w-72 
+  flex flex-col p-6 border-r bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 rounded-r-4xl
   transition-transform duration-500 ease-in-out
   z-50
 `;
