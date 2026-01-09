@@ -18,7 +18,21 @@ export class AvatarComponent {
   alt = input<string>('Avatar');
   size = input<COMPONENT_SIZE>(COMPONENT_SIZES.base);
   variant = input<AVATAR_VARIANT>(AVATAR_VARIANTS.circle);
+  label = input<string>('');
   initials = input<string>('');
+
+  computedInitials = computed(() => {
+    if (this.initials()) return this.initials();
+    if (!this.label()) return '';
+    
+    return this.label()
+      .split(' ')
+      .filter((part: string) => part.length > 0)
+      .map((part: string) => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  });
 
   containerClasses = computed(() => {
     return [

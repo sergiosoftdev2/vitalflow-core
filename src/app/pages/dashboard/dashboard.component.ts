@@ -9,18 +9,40 @@ import { ButtonComponent } from '../../ui/button/button';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faWallet, faCalendarCheck, faArrowRight, faCalendarDay, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { 
+  NgApexchartsModule,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexDataLabels,
+  ApexStroke,
+  ApexFill
+} from 'ng-apexcharts';
+import { AvatarComponent } from "../../ui/avatar/avatar";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  stroke: ApexStroke;
+  dataLabels: ApexDataLabels;
+  fill: ApexFill;
+  colors: string[];
+};
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
-    CommonModule, 
-    PageContainerComponent, 
-    TitleComponent, 
-    CardComponent,  
-    RouterLink, 
-    FontAwesomeModule
-  ],
+    CommonModule,
+    PageContainerComponent,
+    TitleComponent,
+    CardComponent,
+    RouterLink,
+    FontAwesomeModule,
+    NgApexchartsModule,
+    AvatarComponent
+],
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent {
@@ -42,16 +64,95 @@ export class DashboardComponent {
   }
 
   title = `${this.greeting}, ${this.myProfile?.firstName || 'Usuario'}`;
-
-  // Icons
   faWallet = faWallet;
   faCalendarCheck = faCalendarCheck;
   faArrowRight = faArrowRight;
   faCalendarDay = faCalendarDay;
   faChartLine = faChartLine;
-
-  // Mock Data
   balance = 12450.85;
+
+  citas = [
+    {
+      nombre: "Juan Pérez",
+      fecha: "2026-01-10",
+      hora: "10:00",
+      imageSrc: "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      nombre: "Manuel Hierro",
+      fecha: "2026-01-10",
+      hora: "10:00",
+      imageSrc: "https://randomuser.me/api/portraits/men/2.jpg"
+    },
+    {
+      nombre: "Ana García",
+      fecha: "2026-01-10",
+      hora: "10:00",
+      imageSrc: "https://randomuser.me/api/portraits/women/3.jpg"
+    },
+    {
+      nombre: "María López",
+      fecha: "2026-01-10",
+      hora: "10:00",
+      imageSrc: "https://randomuser.me/api/portraits/women/4.jpg"
+    },
+  ]
+
+  public chartOptions: ChartOptions = {
+    series: [
+      {
+        name: "Ingresos",
+        data: [3100, 4000, 2800, 5100, 4200, 10900, 10000]
+      }
+    ],
+    chart: {
+      type: "area",
+      height: 240,
+      fontFamily: 'Inter, sans-serif',
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: true
+      },
+      sparkline: {
+        enabled: false
+      }
+    },
+    colors: ["#22c55e"],
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: "smooth",
+      width: 2
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.45,
+        opacityTo: 0.05,
+        stops: [20, 100]
+      }
+    },
+    xaxis: {
+      categories: ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels: {
+        style: {
+          colors: '#a1a1aa',
+          fontSize: '10px',
+          fontWeight: 600
+        }
+      }
+    }
+  };
 
 }
 

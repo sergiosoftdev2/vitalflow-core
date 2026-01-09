@@ -25,8 +25,30 @@
       </div>
     </app-card>
 
-    <app-card class="md:cols-span-4">
-      
+    <app-card [isClickable]="true" routerLink="/dashboard/reports" class="md:col-span-4" title="Ingresos semanales" description="Comparativa semanal de facturación">
+      <apx-chart 
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [xaxis]="chartOptions.xaxis"
+        [colors]="chartOptions.colors"
+        [dataLabels]="chartOptions.dataLabels"
+        [stroke]="chartOptions.stroke"
+        [fill]="chartOptions.fill"
+      ></apx-chart>
+    </app-card>
+
+    <app-card class="md:col-span-2" title="Citas" description="Próximas citas" additionalClasses="h-full">
+      <div class="flex flex-col gap-4">
+        @for (cita of citas; track $index) {
+          <div class="flex items-center gap-2">
+            <app-avatar [src]="cita.imageSrc" size="base" [alt]="cita.nombre" [label]="cita.nombre" />
+            <div>
+              <span class="text-sm font-semibold">{{ cita.nombre }}</span>
+              <p class="text-xs text-zinc-500">{{ cita.fecha }} | {{ cita.hora }}</p>
+            </div>
+          </div>
+        }
+      </div>
     </app-card>
 
   </div>
