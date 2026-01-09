@@ -15,7 +15,7 @@ import { TableComponent } from '../../ui/table/table';
 import { TableColumnType } from '../../ui/table/table.enum';
 import { ModalComponent } from '../../ui/modal/modal';
 import { TabsComponent } from '../../ui/tabs/tabs';
-import { faUser, faCog, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCog, faBell, faCube, faKeyboard, faTag, faInfoCircle, faTable } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-design-system',
@@ -41,6 +41,15 @@ import { faUser, faCog, faBell } from '@fortawesome/free-solid-svg-icons';
 export class DesignSystemComponent {
   isModalOpen = false;
   isModalWithTwoButtonsOpen = false;
+
+  activeCategory = 'general';
+  categoryTabs = [
+    { id: 'general', label: 'General', icon: faCube },
+    { id: 'forms', label: 'Formularios', icon: faKeyboard },
+    { id: 'indicators', label: 'Indicadores', icon: faTag },
+    { id: 'feedback', label: 'Feedback', icon: faInfoCircle },
+    { id: 'navigation', label: 'Navegación & Data', icon: faTable },
+  ];
 
   activeTab = 'perfil';
   tabItems = [

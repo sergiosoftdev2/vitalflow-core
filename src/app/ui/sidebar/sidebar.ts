@@ -57,6 +57,7 @@ export class SidebarComponent {
   menuItems: SidebarItem[] = [
     { label: 'Vista general', icon: faChartPie, route: '/dashboard' },
     { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
+    { label: 'Design System', icon: faCalendar, route: '/dashboard/design-system' },
     { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
     { 
       label: 'Informes', 

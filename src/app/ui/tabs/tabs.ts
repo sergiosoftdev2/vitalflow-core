@@ -47,7 +47,7 @@ export class TabsComponent {
     }
     
     if (isActive && !isFill) {
-      return `${base} bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400`;
+      return `${base} bg-zinc-950 text-white dark:bg-white dark:text-zinc-950`;
     }
     
     return `${base} bg-zinc-400/20 text-zinc-500 dark:text-zinc-400`;

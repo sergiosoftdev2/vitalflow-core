@@ -6,13 +6,14 @@ export const MODAL_BACKDROP_CLASSES = `
 `;
 
 export const MODAL_CONTAINER_CLASSES = `
-  fixed inset-0 z-[101] flex items-center justify-center p-4 sm:p-6
+  fixed inset-0 z-[101] flex items-end justify-center sm:items-center p-0 sm:p-6
 `;
 
 export const MODAL_BODY_CLASSES = `
-  w-full max-w-lg bg-white dark:bg-zinc-900 
-  rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800
+  w-full sm:max-w-lg bg-white dark:bg-zinc-900 
+  rounded-t-[32px] sm:rounded-[2rem] shadow-2xl border-t sm:border border-zinc-200 dark:border-zinc-800
   flex flex-col overflow-hidden transition-all duration-300
+  max-h-[96vh] sm:max-h-[85vh]
 `;
 
 export const MODAL_HEADER_CLASSES = `

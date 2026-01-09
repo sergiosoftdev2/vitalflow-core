@@ -3,8 +3,14 @@
   <div 
     @backdropAnimation
     [class]="backdropClasses()" 
+    [style.opacity]="dragOpacity()"
+    [style.backdrop-filter]="'blur(' + dragBlur() + 'px)'"
+    [style.transition]="isDragging() ? 'none' : 'opacity 0.3s ease-out, backdrop-filter 0.3s ease-out'"
     (click)="onClose()" 
-    class="fixed inset-0 z-100 bg-zinc-950/20 dark:bg-zinc-950/60 backdrop-blur-sm"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd()"
+    class="fixed inset-0 z-100 bg-zinc-950/20 dark:bg-zinc-950/60 transition-all"
   ></div>
 
   <!-- Container -->
@@ -14,8 +20,20 @@
     <div 
       @modalAnimation
       [class]="bodyClasses()" 
+      [style.transform]="'translateY(' + dragY() + 'px)'"
+      [style.opacity]="dragOpacity()"
+      [style.transition]="isDragging() ? 'none' : 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease-out'"
       (click)="stopPropagation($event)"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
     >
+      <!-- Mobile Handle -->
+      <div 
+        class="sm:hidden flex justify-center pt-3 pb-1 cursor-grab active:cursor-grabbing"
+      >
+        <div class="w-10 h-1 bg-zinc-200 dark:bg-zinc-800 rounded-full"></div>
+      </div>
       
       <!-- Header -->
       <header [class]="headerClasses()">

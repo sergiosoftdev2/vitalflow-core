@@ -19,6 +19,6 @@ export const TABS_VARIANTS = {
   [TabVariant.LINE]: {
     container: 'border-b border-zinc-200 dark:border-zinc-800 gap-6 px-1',
     item: 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 border-b-2 border-transparent -mb-[1px]',
-    active: 'text-green-600 dark:text-green-400 border-green-600 dark:border-green-400'
+    active: 'text-zinc-950 dark:text-white border-zinc-950 dark:border-white'
   }
 };

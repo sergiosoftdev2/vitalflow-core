@@ -1,406 +1,248 @@
 <div class="p-8 space-y-8 bg-slate-50 dark:bg-zinc-950 transition-all min-h-screen duration-200 ease-in-out">
   
-  <section class="space-y-4">
-    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Design System</h1>
-    <p class="text-gray-600 dark:text-gray-400">Overview of the application's UI components.</p>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-600">
-
-  <!-- BUTTONS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Buttons</h2>
-    
-    <div class="space-y-2">
-      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
-      <div class="flex flex-wrap gap-4 items-center">
-        <app-button label="Filled (Default)"></app-button>
-        <app-button label="Outlined" variant="outlined"></app-button>
-        <app-button label="Ghost" variant="ghost"></app-button>
-      </div>
+  <section class="space-y-6">
+    <div class="space-y-1">
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Design System</h1>
+      <p class="text-gray-600 dark:text-gray-400">Guía interactiva de componentes y estilos de Vitalflow.</p>
     </div>
 
-    <div class="space-y-2">
-      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Colors</h3>
-      <div class="flex flex-wrap gap-4 items-center">
-        <app-button label="Primary" color="primary"></app-button>
-        <app-button label="Secondary" color="secondary"></app-button>
-        <app-button label="Destructive" color="destructive"></app-button>
-      </div>
-    </div>
-
-    <div class="space-y-2">
-      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
-      <div class="flex flex-wrap gap-4 items-end">
-        <app-button label="Small" size="sm"></app-button>
-        <app-button label="Base (Default)" size="base"></app-button>
-        <app-button label="Large" size="lg"></app-button>
-      </div>
+    <!-- Navegación de Categorías -->
+    <div class="sticky top-0 z-10 -mx-8 px-8 py-4 bg-slate-50/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+      <app-tabs 
+        [items]="categoryTabs" 
+        [activeId]="activeCategory" 
+        variant="line"
+        (tabChange)="activeCategory = $event"
+      ></app-tabs>
     </div>
   </section>
 
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- AVATARS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Avatars</h2>
-    
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
-        <div class="flex flex-wrap gap-4 items-end">
-          <app-avatar src="https://i.pravatar.cc/150?u=1" size="sm"></app-avatar>
-          <app-avatar src="https://i.pravatar.cc/150?u=2" size="base"></app-avatar>
-          <app-avatar src="https://i.pravatar.cc/150?u=3" size="md"></app-avatar>
-          <app-avatar src="https://i.pravatar.cc/150?u=4" size="lg"></app-avatar>
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Fallbacks & Variants</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-avatar initials="SG" size="md"></app-avatar>
-          <app-avatar initials="JD" size="md" variant="square"></app-avatar>
-          <app-avatar size="md"></app-avatar> <!-- Default icon fallback -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- AVATAR GROUP -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Avatar Group</h2>
-    
-    <div class="space-y-2">
-      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Animated Group</h3>
-      <app-avatar-group>
-        <app-avatar src="https://i.pravatar.cc/150?u=10"></app-avatar>
-        <app-avatar src="https://i.pravatar.cc/150?u=11"></app-avatar>
-        <app-avatar src="https://i.pravatar.cc/150?u=12"></app-avatar>
-        <app-avatar src="https://i.pravatar.cc/150?u=13"></app-avatar>
-        <app-avatar initials="+5"></app-avatar>
-      </app-avatar-group>
-    </div>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- INPUTS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Inputs</h2>
-    
-    <div class="space-y-4 max-w-sm">
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Search Input</h3>
-        <app-input-search placeholder="Search anything..."></app-input-search>
-      </div>
-    </div>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- BADGES -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Badges</h2>
-    
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants & Shapes</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-badge color="primary">8</app-badge>
-          <app-badge color="primary" variant="subtle">New</app-badge>
-          <app-badge color="destructive" shape="circle">1</app-badge>
-          <app-badge color="info" variant="outline">Update</app-badge>
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Colors</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-badge color="primary">Primary</app-badge>
-          <app-badge color="secondary">Secondary</app-badge>
-          <app-badge color="success">Success</app-badge>
-          <app-badge color="destructive">Destructive</app-badge>
-          <app-badge color="info">Info</app-badge>
-          <app-badge color="warning">Warning</app-badge>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- TAGS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tags</h2>
-    
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-tag color="primary" variant="filled">React</app-tag>
-          <app-tag color="primary" variant="subtle">Angular</app-tag>
-          <app-tag color="primary" variant="outline">Vue</app-tag>
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Removable</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-tag color="secondary" [removable]="true">TypeScript</app-tag>
-          <app-tag color="destructive" [removable]="true" variant="subtle">Deleting...</app-tag>
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Colors</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-tag color="primary">Primary</app-tag>
-          <app-tag color="secondary">Secondary</app-tag>
-          <app-tag color="success">Success</app-tag>
-          <app-tag color="destructive">Destructive</app-tag>
-          <app-tag color="info">Info</app-tag>
-          <app-tag color="warning">Warning</app-tag>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
+  <!-- CONTENIDO DINÁMICO POR CATEGORÍA -->
   
-  <!-- TOOLTIPS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tooltips</h2>
-    
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Default Text Tooltip</h3>
-        <div class="flex flex-wrap gap-4 items-center">
-          <app-button label="Hover me (Top)" appTooltip="This is a tooltip on top"></app-button>
-          <div class="p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl cursor-help" 
-               appTooltip="Interesante, ¿verdad?">
-            Pasa el ratón aquí
+  <!-- CATEGORÍA: GENERAL -->
+  @if (activeCategory === 'general') {
+    <div class="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <!-- TITLES -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Titles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
+            <div class="space-y-2">
+              <app-title label="Heading 3XL" size="3xl"></app-title>
+              <app-title label="Heading XL" size="xl"></app-title>
+              <app-title label="Heading MD" size="md"></app-title>
+              <app-title label="Heading SM" size="sm"></app-title>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
+            <div class="flex flex-wrap gap-8 items-end">
+              <app-title label="Primary Colored Title" [isPrimary]="true"></app-title>
+              <app-title label="Normal Weight" weight="normal"></app-title>
+              <app-title label="Semibold" weight="semibold"></app-title>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <hr class="border-zinc-200 dark:border-zinc-800">
-  
-  <!-- CONTEXT MENUS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Context Menus</h2>
-    
-    <div class="space-y-2">
-      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Right Click Example</h3>
-      <div 
-        class="w-full max-w-md p-12 bg-white dark:bg-zinc-900 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-context-menu group hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
-        [appContextMenu]="menuItems"
-      >
-        <div class="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 group-hover:scale-110 transition-transform">
-          <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      <!-- BUTTONS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Buttons</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
+            <div class="flex flex-col gap-3">
+              <app-button label="Filled (Default)"></app-button>
+              <app-button label="Outlined" variant="outlined"></app-button>
+              <app-button label="Ghost" variant="ghost"></app-button>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Colors</h3>
+            <div class="flex flex-col gap-3">
+              <app-button label="Primary" color="primary"></app-button>
+              <app-button label="Secondary" color="secondary"></app-button>
+              <app-button label="Destructive" color="destructive"></app-button>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
+            <div class="flex flex-wrap gap-3 items-end">
+              <app-button label="SM" size="sm"></app-button>
+              <app-button label="Base" size="base"></app-button>
+              <app-button label="LG" size="lg"></app-button>
+            </div>
+          </div>
         </div>
-        <p class="text-zinc-500 text-sm font-medium">Haz click derecho aquí</p>
-      </div>
+      </section>
+
+      <!-- AVATARS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Avatars</h2>
+        <div class="space-y-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
+              <div class="flex flex-wrap gap-4 items-end">
+                <app-avatar src="https://i.pravatar.cc/150?u=1" size="sm"></app-avatar>
+                <app-avatar src="https://i.pravatar.cc/150?u=2" size="base"></app-avatar>
+                <app-avatar src="https://i.pravatar.cc/150?u=3" size="md"></app-avatar>
+                <app-avatar src="https://i.pravatar.cc/150?u=4" size="lg"></app-avatar>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Animated Group</h3>
+              <app-avatar-group>
+                <app-avatar src="https://i.pravatar.cc/150?u=10"></app-avatar>
+                <app-avatar src="https://i.pravatar.cc/150?u=11"></app-avatar>
+                <app-avatar src="https://i.pravatar.cc/150?u=12"></app-avatar>
+                <app-avatar src="https://i.pravatar.cc/150?u=13"></app-avatar>
+                <app-avatar initials="+5"></app-avatar>
+              </app-avatar-group>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
+  }
 
+  <!-- CATEGORÍA: FORMULARIOS -->
+  @if (activeCategory === 'forms') {
+    <div class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Form Inputs</h2>
+        <div class="max-w-md bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="space-y-6">
+            <div class="space-y-2">
+              <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Search Input</h3>
+              <app-input-search placeholder="Buscar algo..."></app-input-search>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  }
 
-  <hr class="border-zinc-200 dark:border-zinc-800">
+  <!-- CATEGORÍA: INDICADORES -->
+  @if (activeCategory === 'indicators') {
+    <div class="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <!-- BADGES -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Badges</h2>
+        <div class="space-y-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants & Colors</h3>
+            <div class="flex flex-wrap gap-4">
+              <app-badge color="primary">8</app-badge>
+              <app-badge color="primary" variant="subtle">New</app-badge>
+              <app-badge color="destructive" shape="circle">1</app-badge>
+              <app-badge color="info" variant="outline">Update</app-badge>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <!-- SKELETONS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Skeletons</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="space-y-6">
-        <div class="space-y-2">
-          <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Basic Shapes</h3>
-          <div class="flex flex-wrap gap-4 items-end">
-            <app-skeleton type="circle" width="48px"></app-skeleton>
-            <app-skeleton type="rectangle" width="120px" height="40px"></app-skeleton>
-            <app-skeleton type="text" [count]="3" width="200px"></app-skeleton>
+      <!-- TAGS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tags</h2>
+        <div class="space-y-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
+            <div class="flex flex-wrap gap-4">
+              <app-tag color="primary" variant="filled">React</app-tag>
+              <app-tag color="primary" variant="subtle">Angular</app-tag>
+              <app-tag color="primary" variant="outline">Vue</app-tag>
+              <app-tag color="secondary" [removable]="true">TypeScript</app-tag>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  }
+
+  <!-- CATEGORÍA: FEEDBACK -->
+  @if (activeCategory === 'feedback') {
+    <div class="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <!-- MODALS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Modals & Bottom Sheets</h2>
+        <div class="bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="flex flex-wrap gap-4">
+            <app-button label="Abrir Modal Bottom Sheet" (click)="isModalOpen = true"></app-button>
           </div>
         </div>
 
-        <div class="space-y-2">
-          <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Card Skeleton</h3>
-          <app-skeleton type="card" width="340px"></app-skeleton>
-        </div>
-      </div>
+        <app-modal 
+          [isOpen]="isModalOpen" 
+          title="Confirmar Acción"
+          description="¿Estás seguro? En móvil este modal se abrirá desde abajo y podrás cerrarlo arrastrándolo."
+          primaryActionLabel="Confirmar"
+          (close)="isModalOpen = false"
+          (primaryAction)="isModalOpen = false"
+        >
+          <div class="p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl border border-zinc-100 dark:border-zinc-800">
+            <p class="text-sm">Prueba a arrastrarme hacia abajo si estás en vista móvil.</p>
+          </div>
+        </app-modal>
+      </section>
 
-      <div class="space-y-6">
-        <div class="space-y-2">
-          <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">List Skeleton</h3>
+      <!-- SKELETONS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Skeletons</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <app-skeleton type="card" width="100%"></app-skeleton>
           <app-skeleton type="list" [count]="3" width="100%"></app-skeleton>
         </div>
+      </section>
 
-        <div class="space-y-2">
-          <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Table Skeleton</h3>
-          <app-skeleton type="table" [rows]="3" [cols]="3"></app-skeleton>
+      <!-- TOOLTIPS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tooltips</h2>
+        <div class="bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <app-button label="Pasa el ratón (Top)" appTooltip="Este es un tooltip interactivo"></app-button>
         </div>
-      </div>
+      </section>
     </div>
+  }
 
-    <div class="space-y-2">
-      <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Calendar Skeleton</h3>
-      <app-skeleton type="calendar"></app-skeleton>
-    </div>
-  </section>
-
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- TITLES -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Titles</h2>
-    
-    <div class="space-y-8">
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Sizes</h3>
-        <div class="space-y-2">
-          <app-title label="Heading 3XL" size="3xl"></app-title>
-          <app-title label="Heading XL" size="xl"></app-title>
-          <app-title label="Heading MD" size="md"></app-title>
-          <app-title label="Heading SM" size="sm"></app-title>
+  <!-- CATEGORÍA: NAVEGACIÓN & DATA -->
+  @if (activeCategory === 'navigation') {
+    <div class="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
+      <!-- TABS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tabs</h2>
+        <div class="grid grid-cols-1 gap-8 bg-white dark:bg-zinc-900 p-8 rounded-4xl border border-zinc-200 dark:border-zinc-800">
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Fill Variant (Pills)</h3>
+            <app-tabs [items]="tabItems" [activeId]="activeTab" variant="fill" (tabChange)="activeTab = $event"></app-tabs>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Line Variant</h3>
+            <app-tabs [items]="tabItems" [activeId]="activeTab" variant="line" (tabChange)="activeTab = $event"></app-tabs>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Variants</h3>
-        <div class="flex flex-wrap gap-8 items-end">
-          <app-title label="Primary Colored Title" [isPrimary]="true"></app-title>
-          <app-title label="Normal Weight Title" weight="normal"></app-title>
-          <app-title label="Semibold Title" weight="semibold"></app-title>
+      <!-- TABLES -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tables</h2>
+        <div class="bg-white dark:bg-zinc-900 p-4 rounded-4xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <app-table [columns]="tableColumns" [data]="tableData"></app-table>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <hr class="border-zinc-200 dark:border-zinc-800">
-  
-  <!-- TABLES -->
-  <section class="space-y-4 pb-20">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tables</h2>
-    
-    <div class="space-y-8">
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Default Table</h3>
-        <app-table [columns]="tableColumns" [data]="tableData"></app-table>
-      </div>
-
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Custom Cell Template</h3>
-        <app-table [columns]="tableColumns" [data]="tableData" (rowClick)="tableData[0]">
-          <ng-template #cellTemplate let-row let-column="column">
-            @if (column.key === 'user') {
-              <div class="flex items-center gap-3">
-                <app-avatar [src]="row.user" size="sm" />
-                <div class="flex flex-col">
-                  <span class="font-semibold text-zinc-900 dark:text-zinc-100">{{ row.user_label }}</span>
-                  <span class="text-xs text-zinc-500">{{ row.email }}</span>
-                </div>
-              </div>
-            } @else if (column.key === 'role') {
-              <app-badge [color]="row.role === 'Administrador' ? 'primary' : 'secondary'">{{ row.role }}</app-badge>
-            } @else if (column.key === 'status') {
-              <app-tag [color]="row.status === 'Activo' ? 'success' : 'destructive'">{{ row.status }}</app-tag>
-            } @else if (column.key === 'actions') {
-              <div class="flex justify-end gap-2">
-                <app-button size="sm" variant="ghost">Ver</app-button>
-                <app-button size="sm" variant="ghost">Editar</app-button>
-              </div>
-            } @else if (column.key !== 'email') {
-              {{ row[column.key] }}
-            }
-          </ng-template>
-        </app-table>
-      </div>
-
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Loading State</h3>
-        <app-table [columns]="tableColumns" [data]="[]" [isLoading]="true"></app-table>
-      </div>
-
-      <div class="space-y-4">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Empty State</h3>
-        <app-table [columns]="tableColumns" [data]="[]" emptyMessage="No hay usuarios registrados actualmente"></app-table>
-      </div>
-    </div>
-  </section>
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- MODALS -->
-  <section class="space-y-4">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Modals</h2>
-    
-    <div class="flex flex-wrap gap-4">
-      <app-button label="Abrir Modal Simple" (click)="isModalOpen = true"></app-button>
-      <app-button label="Abrir Modal con 2 Botones" variant="outlined" (click)="isModalWithTwoButtonsOpen = true"></app-button>
-    </div>
-
-    <!-- Simple Modal Demo -->
-    <app-modal 
-      [isOpen]="isModalOpen" 
-      title="Confirmar Acción"
-      description="¿Estás seguro de que deseas realizar esta operación? Esta acción no se puede deshacer."
-      primaryActionLabel="Confirmar"
-      (close)="isModalOpen = false"
-      (primaryAction)="isModalOpen = false"
-    >
-      <p>Aquí puedes poner cualquier contenido extra que necesites dentro del cuerpo del modal.</p>
-    </app-modal>
-
-    <!-- Two Buttons Modal Demo -->
-    <app-modal 
-      [isOpen]="isModalWithTwoButtonsOpen" 
-      title="Ajustes de Cuenta"
-      description="Modifica las preferencias de tu perfil y cuenta de usuario."
-      primaryActionLabel="Guardar Cambios"
-      secondaryActionLabel="Cancelar"
-      (close)="isModalWithTwoButtonsOpen = false"
-      (primaryAction)="isModalWithTwoButtonsOpen = false"
-      (secondaryAction)="isModalWithTwoButtonsOpen = false"
-    >
-      <div class="space-y-4 pt-2">
-        <div class="p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl border border-zinc-100 dark:border-zinc-800">
-          <p class="text-sm font-medium">Información de Seguridad</p>
-          <p class="text-xs text-zinc-500 mt-1">Tu contraseña fue actualizada hace 3 meses.</p>
+      <!-- CONTEXT MENUS -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Context Menus</h2>
+        <div 
+          class="w-full max-w-md p-12 bg-white dark:bg-zinc-900 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-4xl flex flex-col items-center justify-center gap-2 cursor-context-menu"
+          [appContextMenu]="menuItems"
+        >
+          <p class="text-zinc-500 text-sm font-medium">Click derecho aquí</p>
         </div>
-      </div>
-    </app-modal>
-  </section>
-
-  <hr class="border-zinc-200 dark:border-zinc-800">
-
-  <!-- TABS -->
-  <section class="space-y-4 pb-20">
-    <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Tabs</h2>
-    
-    <div class="space-y-8">
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Fill Variant (Pills)</h3>
-        <app-tabs 
-          [items]="tabItems" 
-          [activeId]="activeTab" 
-          variant="fill"
-          (tabChange)="activeTab = $event"
-        ></app-tabs>
-      </div>
-
-      <div class="space-y-2">
-        <h3 class="text-sm font-medium text-gray-500 uppercase tracking-wider">Line Variant</h3>
-        <app-tabs 
-          [items]="tabItems" 
-          [activeId]="activeTab" 
-          variant="line"
-          (tabChange)="activeTab = $event"
-        ></app-tabs>
-      </div>
+      </section>
     </div>
-  </section>
+  }
 
 </div>
