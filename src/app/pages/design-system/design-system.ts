@@ -7,6 +7,8 @@ import { InputSearchComponent } from '../../ui/input-search/input-search';
 import { BadgeComponent } from '../../ui/badge/badge';
 import { TagComponent } from '../../ui/tag/tag';
 import { TooltipDirective } from '../../ui/tooltip/tooltip.directive';
+import { ContextMenuDirective } from '../../ui/context-menu/context-menu.directive';
+import { faEdit, faTrash, faShare, faCopy, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-design-system',
@@ -19,10 +21,19 @@ import { TooltipDirective } from '../../ui/tooltip/tooltip.directive';
     InputSearchComponent,
     BadgeComponent,
     TagComponent,
-    TooltipDirective
+    TooltipDirective,
+    ContextMenuDirective
   ],
   templateUrl: './design-system.html',
 })
 export class DesignSystemComponent {
-
+  menuItems = [
+    { label: 'Editar', icon: faEdit, action: () => console.log('Edit') },
+    { label: 'Copiar', icon: faCopy, action: () => console.log('Copy') },
+    { label: 'Compartir', icon: faShare, action: () => console.log('Share') },
+    { separator: true },
+    { label: 'Abrir en nueva pestaña', icon: faExternalLinkAlt, action: () => console.log('Open') },
+    { separator: true },
+    { label: 'Eliminar', icon: faTrash, action: () => console.log('Delete'), destructive: true },
+  ];
 }

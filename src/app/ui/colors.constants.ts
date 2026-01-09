@@ -11,11 +11,16 @@ export const OfficialColors = {
   destructive_action: 'text-red-600 dark:text-red-400 hover:bg-red-600 hover:text-white dark:hover:bg-red-500 dark:hover:text-red-950 active:bg-red-700 active:text-white dark:active:bg-red-600 dark:active:text-red-950',
 
   default_bg_color: 'bg-zinc-50 dark:bg-zinc-900',
+  default_bg_hover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800',
   default_border_color: 'border-zinc-200 dark:border-zinc-700',
+  default_border_hover: 'hover:border-zinc-300 dark:hover:border-zinc-600',
+  default_text_accent: 'text-zinc-950 dark:text-zinc-50',
+  default_text_subtle: 'text-zinc-500 dark:text-zinc-400',
 
   tooltip_bg_color: 'bg-zinc-950/90 dark:bg-zinc-800/95 backdrop-blur-md border-zinc-800 dark:border-zinc-700',
   tooltip_text_color: 'text-white dark:text-zinc-100',
 
   menu_bg_color: 'bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-zinc-200 dark:border-zinc-800',
   menu_item_hover: 'hover:bg-zinc-100 dark:hover:bg-zinc-800',
+  
 }

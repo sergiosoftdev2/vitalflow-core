@@ -1,11 +1,13 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { User } from '../interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
   private readonly STORAGE_KEY = 'vyntal_user';
+  private readonly router = inject(Router);
   
   private _user = signal<User | null>(null);
   
@@ -38,6 +40,7 @@ export class SessionService {
   clearSession(): void {
     this._user.set(null);
     localStorage.removeItem(this.STORAGE_KEY);
+    this.router.navigate(['/login']);
   }
 
   getUserValue(): User | null {

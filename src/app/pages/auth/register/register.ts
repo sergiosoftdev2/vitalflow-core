@@ -1,6 +1,6 @@
-import { Component, signal, OnInit, inject } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, ActivatedRoute } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from "../../../ui/card/card";
@@ -9,31 +9,18 @@ import { InputPasswordComponent } from "../../../ui/input-password/input-passwor
 import { ButtonComponent } from "../../../ui/button/button";
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule, CardComponent, ButtonComponent, InputTextComponent, InputPasswordComponent],
-  templateUrl: './login.html',
+  templateUrl: './register.html',
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent {
   private readonly authService = inject(AuthService);
   
+  firstName = signal('');
+  lastName = signal('');
   email = signal('');
   password = signal('');
-  
-  private route = inject(ActivatedRoute);
-
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params['user']) {
-        try {
-          const user = JSON.parse(decodeURIComponent(params['user']));
-          this.authService.handleSocialLogin(user);
-        } catch (e) {
-          console.error('Error parsing user data', e);
-        }
-      }
-    });
-  }
 
   onGoogleLogin() {
     this.authService.googleLogin();
@@ -42,8 +29,15 @@ export class LoginComponent implements OnInit {
   onSubmit(e: Event) {
     if (e) e.preventDefault();
     if (this.email() && this.password()) {
-      this.authService.login({ email: this.email(), password: this.password() }).subscribe({
-        error: (err) => console.error('Error al iniciar sesión', err)
+      const userData = {
+        firstName: this.firstName(),
+        lastName: this.lastName(),
+        email: this.email(),
+        password: this.password()
+      };
+      
+      this.authService.register(userData).subscribe({
+        error: (err) => console.error('Error al registrar usuario', err)
       });
     }
   }

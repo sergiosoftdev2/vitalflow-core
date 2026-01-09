@@ -9,7 +9,9 @@ import {
   faChartLine,
   faCalendar,
   faUsersBetweenLines,
-  faBuilding
+  faBuilding,
+  faUser,
+  faSignOut
 } from '@fortawesome/free-solid-svg-icons';
 import { LayoutService } from '../../services/layout.service';
 import { SidebarItem } from './sidebar.enum';
@@ -22,16 +24,21 @@ import { InputSearchComponent } from "../input-search/input-search";
 import { BadgeComponent } from "../badge/badge";
 import { AvatarComponent } from "../avatar/avatar";
 import { SessionService } from '../../services/session.service';
+import { ContextMenuDirective } from '../context-menu/context-menu.directive';
+import { ContextMenuItem } from '../context-menu/context-menu';
+import { Router } from '@angular/router';
+import { ButtonComponent } from "../button/button";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, FontAwesomeModule, InputSearchComponent, BadgeComponent, AvatarComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ContextMenuDirective, FontAwesomeModule, InputSearchComponent, BadgeComponent, AvatarComponent, ButtonComponent],
   templateUrl: './sidebar.html'
 })
 export class SidebarComponent {
   layoutService = inject(LayoutService);
   sessionService = inject(SessionService);
+  router = inject(Router);
 
   profile = this.sessionService.user;
 
@@ -41,9 +48,14 @@ export class SidebarComponent {
   faSearch = faSearch;
   faBars = faBars;
 
+  profileContextMenu: ContextMenuItem[] = [
+    { label: 'Mi perfil', icon: faUser, action: () => this.openProfile() },
+    { label: 'Cerrar sesión', icon: faSignOut, action: () => this.sessionService.clearSession() },
+  ];
+
   menuItems: SidebarItem[] = [
     { label: 'Mi Clínica', icon: faBuilding, route: '/dashboard' },
-    { label: 'Agenda', icon: faCalendar, route: '/dashboard/api' },
+    { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
     { 
       label: 'Mi equipo', 
       icon: faUsers, 
@@ -58,4 +70,9 @@ export class SidebarComponent {
     },
     { label: 'Clientes', icon: faUsersBetweenLines, route: '/dashboard/api' }
   ];
+
+  openProfile() {
+    this.router.navigate(['dashboard/profile']);
+  }
+
 }

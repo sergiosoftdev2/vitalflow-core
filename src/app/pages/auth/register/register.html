@@ -1,0 +1,59 @@
+<div class="h-dvh w-full overflow-hidden flex flex-col gap-4 justify-end md:items-center md:justify-center dark:bg-zinc-950">
+  <div class="space-y-2">
+    <app-card addiotionalClasses="w-full md:w-[400px] rounded-t-3xl rounded-b-none md:rounded-2xl border-x-0 border-b-0 md:border-x md:border-b flex flex-col gap-4">
+      <div class="w-full flex flex-col gap-2">
+        <div class="flex gap-2">
+          <app-input-text 
+            label="Nombre" 
+            placeholder="Juan" 
+            [(value)]="firstName"
+            class="flex-1"
+          ></app-input-text>
+          
+          <app-input-text 
+            label="Apellidos" 
+            placeholder="Pérez" 
+            [(value)]="lastName"
+            class="flex-1"
+          ></app-input-text>
+        </div>
+
+        <app-input-text 
+          label="Correo Electrónico" 
+          placeholder="ejemplo@correo.com" 
+          [(value)]="email"
+        ></app-input-text>
+        
+        <app-input-password 
+          label="Contraseña" 
+          placeholder="••••••••"
+          [(value)]="password"
+        ></app-input-password>
+      </div>
+
+      <section class="flex flex-col gap-2 w-full">
+        <app-button leadingIcon="fa-solid fa-user-plus" label="Crear Cuenta" [isFullWidth]="true" size="lg" (handler)="onSubmit($event)"></app-button>
+        <hr class="w-full my-2 border-zinc-200 dark:border-zinc-600">
+        <app-button 
+          leadingIcon="fa-brands fa-google" 
+          label="Registrarse con Google" 
+          color="secondary" 
+          [isFullWidth]="true" 
+          size="lg"
+          (handler)="onGoogleLogin()"
+        />
+      </section>
+      <div class="text-zinc-600 dark:text-zinc-400 text-sm">¿Ya tienes cuenta? <a routerLink="/auth/login" class="text-blue-500 text-sm">Inicia sesión aquí</a>.</div>
+    </app-card>
+    
+  </div>
+
+
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-zinc-50/50 dark:bg-zinc-950/0">
+    <div class="absolute -top-[10%] left-[20%] w-160 h-160 rounded-full bg-blue-500/20 dark:bg-blue-500/10 blur-[100px] animate-pulse"></div>
+    <div class="absolute top-[30%] -right-[10%] w-140 h-140 rounded-full bg-indigo-500/20 dark:bg-indigo-500/10 blur-[100px] animate-pulse delay-1000"></div>
+    <div class="absolute -bottom-[10%] left-[10%] w-200 h-200 rounded-full bg-violet-500/20 dark:bg-violet-500/10 blur-[120px] animate-pulse delay-700"></div>
+    
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808020_1px,transparent_1px),linear-gradient(to_bottom,#80808020_1px,transparent_1px)] opacity-20 bg-size-[24px_24px]"></div>
+  </div>
+</div>

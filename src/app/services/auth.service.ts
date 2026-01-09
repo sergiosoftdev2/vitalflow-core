@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SessionService } from './session.service';
 import { User } from '../interfaces/user.interface';
@@ -8,6 +10,7 @@ import { User } from '../interfaces/user.interface';
   providedIn: 'root'
 })
 export class AuthService {
+  private http = inject(HttpClient);
   private sessionService = inject(SessionService);
   private router = inject(Router);
   
@@ -21,19 +24,13 @@ export class AuthService {
     window.location.href = `${this.apiUrl}/auth/google`;
   }
 
-  login(email: string) {
-    const user: User = {
-      _id: 'mock-id-' + Date.now(),
-      email,
-      firstName: 'User',
-      lastName: '',
-      picture: '',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    };
-    
-    this.sessionService.setUser(user);
-    this.router.navigate(['/dashboard']);
+  login(credentials: any) {
+    return this.http.post<User>(`${this.apiUrl}/auth/login`, credentials).pipe(
+      tap(user => {
+        this.sessionService.setUser(user);
+        this.router.navigate(['/dashboard']);
+      })
+    );
   }
 
   handleSocialLogin(user: User) {
@@ -41,8 +38,13 @@ export class AuthService {
     this.router.navigate(['/dashboard']);
   }
 
-  register(email: string) {
-    this.login(email);
+  register(userData: any) {
+    return this.http.post<User>(`${this.apiUrl}/auth/register`, userData).pipe(
+      tap(user => {
+        this.sessionService.setUser(user);
+        this.router.navigate(['/dashboard']);
+      })
+    );
   }
 
   logout() {

@@ -46,18 +46,14 @@
   <!-- Footer Info / Profile -->
   <div class="pt-6 border-t border-zinc-200 dark:border-zinc-800">
     <div class="flex items-center gap-3 px-2">
-      <app-avatar 
-        [src]="profile()?.picture || ''" 
-        [alt]="profile()?.firstName || 'Avatar'"
-        [initials]="(profile()?.firstName?.charAt(0) || '') + (profile()?.lastName?.charAt(0) || '')"
-      ></app-avatar>
-      <div class="flex flex-col min-w-0">
-        <span class="text-sm font-bold text-zinc-900 dark:text-zinc-50 truncate">
-          {{ profile()?.firstName }} {{ profile()?.lastName }}
-        </span>
-        <span class="text-xs text-zinc-500 truncate">
-          {{ profile()?.email }}
-        </span>
+      <div class="hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-xl flex items-center transition-all cursor-pointer duration-200 hover:p-2">
+        <app-avatar
+          [appContextMenu]="profileContextMenu"
+          appContextMenuTrigger="both"
+          [src]="profile()?.picture || ''" 
+          [alt]="profile()?.firstName || 'Avatar'"
+          [initials]="(profile()?.firstName?.charAt(0) || '') + (profile()?.lastName?.charAt(0) || '')"
+        ></app-avatar>
       </div>
     </div>
   </div>

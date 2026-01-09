@@ -1,0 +1,27 @@
+<app-page-container>
+  
+  <header class="flex items-center gap-4">
+    <app-avatar
+      [src]="myProfile()?.picture || ''" 
+      [alt]="myProfile()?.firstName || 'Avatar'"
+      size="lg"
+      [initials]="(myProfile()?.firstName?.charAt(0) || '') + (myProfile()?.lastName?.charAt(0) || '')"
+    ></app-avatar>
+    <div>
+      <h1 class="text-2xl dark:text-zinc-50 text-zinc-950">{{ myProfile()?.firstName | firstLetter }} {{ myProfile()?.lastName | firstLetter }}</h1>
+      <p class="text-zinc-500">Gestiona tu información personal y preferencias.</p>
+    </div>
+  </header>
+
+  <section class="mt-8 grid group grid-cols-1 md:grid-cols-2 gap-4">
+    <app-card [isClickable]="true">
+      <div class="flex items-center group-hover:ml-auto gap-4">
+        <h2 class="text-xl font-semibold">Información personal</h2>
+        <fa-icon [icon]="faArrowRight" class="group-hover:translate-x-2 opacity-0 group-hover:opacity-100 transition-all duration-400 ease-in-out"></fa-icon>
+      </div>
+      <div class="text-sm mt-4">
+        <p [class]="OfficialColors.default_text_subtle">Modifica tu información personal aquí. Puedes modificar tu foto de perfil, nombre, correo, etc.</p>
+      </div>
+    </app-card>
+  </section>
+</app-page-container>

@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from "@angular/core";
+import { Component, computed, input, output } from "@angular/core";
 import { OfficialColors } from "../colors.constants";
 
 @Component({
@@ -9,6 +9,8 @@ import { OfficialColors } from "../colors.constants";
 export class CardComponent {
 
   addiotionalClasses = input<string>();
+  isClickable = input<boolean>();
+  handler = output<MouseEvent>();
 
   cardClass = computed<string>(() => {
     return [
@@ -19,9 +21,18 @@ export class CardComponent {
       'duration-300',
       'ease-in-out',
       'border',
+      this.isClickable() ? `cursor-pointer ${OfficialColors.default_border_hover} ${OfficialColors.default_bg_hover}` : '',
       OfficialColors.default_bg_color,
       OfficialColors.default_border_color,
+      OfficialColors.default_text_accent,
       this.addiotionalClasses()
     ].join(' ')
   })
+
+  handleClick(event: MouseEvent) {
+    if (this.isClickable()) {
+      this.handler.emit(event);
+    }
+  }
+
 }
