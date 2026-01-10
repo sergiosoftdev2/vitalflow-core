@@ -1,0 +1,58 @@
+<div class="mt-6 flex flex-col gap-6">
+  
+  <!-- Row 1: Weekly and Monthly Charts -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    
+    <!-- Weekly Chart -->
+    <div class="bg-white dark:bg-zinc-800 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700">
+      <h3 class="text-lg font-semibold mb-4 text-zinc-900 dark:text-white">Resumen Semanal</h3>
+      <apx-chart
+        [series]="weeklyChartOptions.series!"
+        [chart]="weeklyChartOptions.chart!"
+        [dataLabels]="weeklyChartOptions.dataLabels!"
+        [plotOptions]="weeklyChartOptions.plotOptions!"
+        [yaxis]="weeklyChartOptions.yaxis!"
+        [xaxis]="weeklyChartOptions.xaxis!"
+        [fill]="weeklyChartOptions.fill!"
+        [tooltip]="weeklyChartOptions.tooltip!"
+        [stroke]="weeklyChartOptions.stroke!"
+        [legend]="weeklyChartOptions.legend!"
+      ></apx-chart>
+    </div>
+
+    <!-- Monthly Chart -->
+    <div class="bg-white dark:bg-zinc-800 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700">
+      <h3 class="text-lg font-semibold mb-4 text-zinc-900 dark:text-white">Progreso Mensual</h3>
+      <apx-chart
+        [series]="monthlyChartOptions.series!"
+        [chart]="monthlyChartOptions.chart!"
+        [dataLabels]="monthlyChartOptions.dataLabels!"
+        [stroke]="monthlyChartOptions.stroke!"
+        [fill]="monthlyChartOptions.fill!"
+        [xaxis]="monthlyChartOptions.xaxis!"
+        [yaxis]="monthlyChartOptions.yaxis!"
+        [tooltip]="monthlyChartOptions.tooltip!"
+        [legend]="monthlyChartOptions.legend!"
+      ></apx-chart>
+    </div>
+
+  </div>
+
+  <!-- Row 2: Annual Chart -->
+  <div class="bg-white dark:bg-zinc-800 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-700">
+    <h3 class="text-lg font-semibold mb-4 text-zinc-900 dark:text-white">Facturación Anual</h3>
+    <apx-chart
+      [series]="annualChartOptions.series!"
+      [chart]="annualChartOptions.chart!"
+      [dataLabels]="annualChartOptions.dataLabels!"
+      [stroke]="annualChartOptions.stroke!"
+      [xaxis]="annualChartOptions.xaxis!"
+      [yaxis]="annualChartOptions.yaxis!"
+      [fill]="annualChartOptions.fill!"
+      [colors]="annualChartOptions.colors!"
+      [tooltip]="annualChartOptions.tooltip!"
+      [legend]="annualChartOptions.legend!"
+    ></apx-chart>
+  </div>
+
+</div>

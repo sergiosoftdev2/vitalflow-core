@@ -5,21 +5,21 @@ import {
   faBuilding, 
   faCalendar, 
   faChartLine, 
-  faUsersBetweenLines 
+  faUsersBetweenLines, 
+  faWallet
 } from '@fortawesome/free-solid-svg-icons';
 
 const DEFAULT_SIDEBAR_ITEMS: SidebarItem[] = [
   { label: 'Vista general', icon: faChartPie, route: '/dashboard' },
   { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
   { label: 'Design System', icon: faCalendar, route: '/dashboard/design-system' },
-  { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
+  { label: 'Monedero General', icon: faWallet, route: '/dashboard/wallet' },
   { 
     label: 'Informes', 
     icon: faChartLine, 
     route: '/dashboard/branding',
     badge: { value: 'New', color: 'success' }
   },
-  { label: 'Clientes', icon: faUsersBetweenLines, route: '/dashboard/clients' }
 ];
 
 @Injectable({
@@ -30,13 +30,16 @@ export class SidebarService {
   private readonly _items = signal<SidebarItem[]>(DEFAULT_SIDEBAR_ITEMS);
 
   readonly items = this._items.asReadonly();
+  readonly isCustomState = signal<boolean>(false);
 
   setItems(items: SidebarItem[]) {
     this._items.set(items);
+    this.isCustomState.set(true);
   }
 
   reset() {
     this._items.set(DEFAULT_SIDEBAR_ITEMS);
+    this.isCustomState.set(false);
   }
 
 

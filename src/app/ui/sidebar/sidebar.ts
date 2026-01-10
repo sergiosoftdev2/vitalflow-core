@@ -6,7 +6,8 @@ import {
   faSearch, 
   faBars, 
   faUser,
-  faSignOut
+  faSignOut,
+  faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { LayoutService } from '../../services/layout.service';
 import { SidebarService } from '../../services/sidebar.service';
@@ -44,6 +45,7 @@ export class SidebarComponent {
   itemActiveClasses = SIDEBAR_ITEM_ACTIVE_CLASSES;
   faSearch = faSearch;
   faBars = faBars;
+  faArrowLeft = faArrowLeft;
 
   profileContextMenu: ContextMenuItem[] = [
     { label: 'Mi perfil', icon: faUser, action: () => this.openProfile() },
@@ -61,5 +63,10 @@ export class SidebarComponent {
     if (window.innerWidth < 1024) {
       this.layoutService.closeSidebar();
     }
+  }
+
+  goBack() {
+    this.router.navigate(['/dashboard']);
+    this.sidebarService.reset();
   }
 }

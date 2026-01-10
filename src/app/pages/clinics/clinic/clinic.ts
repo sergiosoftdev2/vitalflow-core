@@ -1,9 +1,6 @@
 import { Component, inject } from "@angular/core";
-import { PageContainerComponent } from "../../../ui/container/container";
-import { TitleComponent } from "../../../ui/title/title";
-import { CardComponent } from "../../../ui/card/card";
 import { SidebarService } from "../../../services/sidebar.service";
-import { faCalendar, faChartArea, faCog, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faChartArea, faCog, faFilePdf, faPaperclip, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { ActivatedRoute } from "@angular/router";
 
 import { RouterOutlet } from "@angular/router";
@@ -40,7 +37,7 @@ export class ClinicComponent {
       },
       {
         label: 'Facturas',
-        icon: faChartArea,
+        icon: faFilePdf,
         route: `${baseUrl}/invoices`
       },
       {

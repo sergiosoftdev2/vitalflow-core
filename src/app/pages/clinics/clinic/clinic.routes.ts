@@ -12,18 +12,22 @@ export const CLINIC_ROUTES: Routes = [
   },
   {
     path: 'clients',
-    loadComponent: () => import('../../dashboard/employees/employees').then(m => m.EmployeesComponent)
+    loadComponent: () => import('./pages/clients/clients').then(m => m.ClinicClientsComponent)
+  },
+  {
+    path: 'employees',
+    loadComponent: () => import('./pages/employees/employees').then(m => m.ClinicEmployeesComponent)
   },
   {
     path: 'reports',
-    loadComponent: () => import('../../dashboard/dashboard.component').then(m => m.DashboardComponent)
+    loadComponent: () => import('./pages/reports/reports').then(m => m.ClinicReportsComponent)
   },
   {
     path: 'invoices',
-    loadComponent: () => import('../../dashboard/dashboard.component').then(m => m.DashboardComponent)
+    loadComponent: () => import('./pages/invoices/invoices').then(m => m.ClinicInvoicesComponent)
   },
   {
     path: 'profile',
-    loadComponent: () => import('../../dashboard/profile/profile').then(m => m.ProfileComponent)
+    loadComponent: () => import('./pages/settings/settings').then(m => m.ClinicSettingsComponent)
   }
 ];

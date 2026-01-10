@@ -1,0 +1,19 @@
+<app-page-container [isFullSize]="true">
+  <app-title label="Informes" size="xl"></app-title>
+  <app-tabs [items]="tab" variant="line" (tabChange)="onTabChange($event)" [activeId]="activeTabId"></app-tabs>
+
+  @switch (activeTabId) {
+    @case ('Ingresos') {
+      <app-reports-invoicing></app-reports-invoicing>
+    }
+    @case ('Empleados') {
+      <app-reports-employees></app-reports-employees>
+    }
+    @case ('Clientes') {
+      <app-reports-clients></app-reports-clients>
+    }
+    @case ('Citas') {
+      <app-reports-appointments></app-reports-appointments>
+    }
+  }
+</app-page-container>
