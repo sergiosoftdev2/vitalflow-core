@@ -1,0 +1,108 @@
+<app-page-container>
+  <!-- Header -->
+  <header class="mb-10 flex flex-col gap-2">
+    <a routerLink="/dashboard/profile" class="group inline-flex items-center gap-2 text-zinc-500 hover:text-green-600 transition-all duration-300 mb-2 cursor-pointer w-fit">
+      <div class="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 group-hover:bg-green-50 dark:group-hover:bg-green-900/30 transition-colors">
+        <fa-icon [icon]="faChevronLeft" class="text-xs"></fa-icon>
+      </div>
+      <span class="text-sm font-semibold tracking-tight">Volver al perfil</span>
+    </a>
+    <h1 class="text-3xl font-extrabold tracking-tight dark:text-white">Datos Bancarios</h1>
+    <p class="text-zinc-500 dark:text-zinc-400 max-w-lg">Gestiona tus cuentas bancarias y métodos de retiro para tus ingresos generados en la plataforma.</p>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+    
+    <!-- Left Column: Visual Card -->
+    <div class="lg:col-span-1">
+      <div class="sticky top-8 space-y-6">
+        <!-- Visual IBAN Card -->
+        <app-card additionalClasses="!p-0 overflow-hidden !rounded-[2.5rem] !border-none shadow-2xl">
+          <div class="relative w-full h-56 bg-linear-to-br from-zinc-800 to-zinc-950 p-8 flex flex-col justify-between group overflow-hidden">
+            <div class="absolute top-0 right-0 p-10 opacity-10 transition-opacity group-hover:opacity-20">
+               <svg class="w-40 h-40 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.5-7.5-7.5-7.5 1.5-1.5 9 9-9 9z"/></svg>
+            </div>
+            
+            <div class="flex justify-between items-start relative z-10">
+              <div class="px-3 py-1 bg-white/10 rounded-full border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase">Verified Account</div>
+              <div class="w-12 h-9 bg-amber-400/20 rounded-lg border border-amber-400/40 shadow-inner backdrop-blur-sm"></div>
+            </div>
+            
+            <div class="space-y-1 relative z-10">
+              <div class="text-white text-xl font-mono tracking-[0.2em] shadow-sm">{{ bankData.iban }}</div>
+              <div class="text-zinc-500 text-[10px] font-mono tracking-widest uppercase mt-4">Valid Thru: 12/28</div>
+            </div>
+            
+            <div class="flex justify-between items-end relative z-10">
+              <div class="text-zinc-100 font-bold text-base tracking-tight italic">{{ myProfile()?.firstName }} {{ myProfile()?.lastName }}</div>
+              <div class="text-zinc-400 text-xs font-semibold tracking-tighter">{{ bankData.bank }}</div>
+            </div>
+
+            <!-- Glossy Overlay -->
+            <div class="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+          </div>
+        </app-card>
+
+        <div class="p-6 bg-green-50 dark:bg-green-900/10 rounded-[2rem] border border-green-100 dark:border-green-900/20">
+          <h3 class="text-sm font-bold text-green-800 dark:text-green-400 mb-2 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            Pagos automáticos activos
+          </h3>
+          <p class="text-xs leading-relaxed text-green-700 dark:text-green-500 font-medium">
+            Los ingresos generados de tus suscripciones se depositarán en esta cuenta cada final de mes sin comisiones adicionales.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Form -->
+    <div class="lg:col-span-2">
+      <app-card 
+        title="Configuración de Facturación" 
+        description="Asegúrate de que los datos coincidan exactamente con tu certificado de titularidad."
+        [leadingIcon]="faCreditCard"
+        additionalClasses="!p-8 !rounded-[2.5rem]"
+      >
+        <div class="space-y-6 mt-8">
+          <div class="grid grid-cols-1 gap-6">
+            <app-input-text 
+              label="Nombre del Titular" 
+              [value]="myProfile()?.firstName + ' ' + myProfile()?.lastName"
+              placeholder="Ej: Juan Pérez García"
+            ></app-input-text>
+            
+            <app-input-text 
+              label="Número de Cuenta (IBAN)" 
+              [value]="bankData.iban"
+              placeholder="ES00 0000 0000 00 0000000000"
+            ></app-input-text>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <app-input-text 
+                label="Códgo SWIFT / BIC" 
+                [value]="bankData.swift"
+                placeholder="CÓDIGO SWIFT"
+              ></app-input-text>
+              <app-input-text 
+                label="Entidad Bancaria" 
+                [value]="bankData.bank"
+                placeholder="Nombre de tu banco"
+              ></app-input-text>
+            </div>
+          </div>
+
+          <div class="p-6 bg-zinc-50 dark:bg-zinc-800/40 rounded-3xl border border-dashed border-zinc-200 dark:border-zinc-700 mt-8">
+            <p class="text-[11px] text-zinc-500 text-center leading-relaxed font-medium">
+              Nota legal: Al actualizar estos datos, declaras bajo tu responsabilidad que eres el titular legítimo de la cuenta bancaria. Vitalflow realiza comprobaciones periódicas de seguridad.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-end gap-3 mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800">
+          <app-button label="Guardar y Validar Datos" [leadingIcon]="faSave"></app-button>
+        </div>
+      </app-card>
+    </div>
+
+  </div>
+</app-page-container>

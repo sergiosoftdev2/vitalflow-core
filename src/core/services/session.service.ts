@@ -1,5 +1,5 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
-import { User } from '../interfaces/user.interface';
+import { User } from '../../app/interfaces/user.interface';
 import { Router } from '@angular/router';
 
 @Injectable({

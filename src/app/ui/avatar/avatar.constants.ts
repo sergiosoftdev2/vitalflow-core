@@ -5,7 +5,9 @@ export const AVATAR_SIZES = {
   [COMPONENT_SIZES.sm]: 'w-8 h-8 text-xs',
   [COMPONENT_SIZES.base]: 'w-10 h-10 text-sm',
   [COMPONENT_SIZES.md]: 'w-12 h-12 text-base',
-  [COMPONENT_SIZES.lg]: 'w-16 h-16 text-xl'
+  [COMPONENT_SIZES.lg]: 'w-16 h-16 text-xl',
+  [COMPONENT_SIZES.xl]: 'w-24 h-24 text-2xl',
+  [COMPONENT_SIZES['2xl']]: 'w-32 h-32 text-3xl'
 };
 
 export const AVATAR_VARIANT_CLASSES = {

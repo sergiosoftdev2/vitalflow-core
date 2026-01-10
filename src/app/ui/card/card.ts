@@ -3,7 +3,7 @@ import { OfficialColors } from "../colors.constants";
 import { TitleComponent } from "../title/title";
 import { CommonModule } from "@angular/common";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-card',
@@ -17,6 +17,8 @@ export class CardComponent {
   description = input<string>();
   additionalClasses = input<string>('');
   isClickable = input<boolean>(false);
+  leadingIcon = input<IconDefinition>();
+  trailingIcon = input<IconDefinition>();
   handler = output<MouseEvent>();
 
   faArrowRight = faArrowRight;

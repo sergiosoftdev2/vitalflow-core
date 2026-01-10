@@ -1,7 +1,7 @@
 import { Component, effect, HostListener, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeService } from './services/theme.service';
-import { Theme } from './enums/theme.enum';
+import { ThemeService } from '../core/services/theme.service';
+import { Theme } from '../core/enums/theme.enum';
 
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';

@@ -11,13 +11,13 @@ export const TABLE_CLASSES = `
 `;
 
 export const TABLE_HEADER_CLASSES = `
-  bg-zinc-50/50 dark:bg-zinc-800/50
+  bg-zinc-100 dark:bg-zinc-700
   border-b ${OfficialColors.default_border_color}
 `;
 
 export const TABLE_HEADER_CELL_CLASSES = `
-  px-6 py-4 text-xs font-semibold uppercase tracking-wider
-  ${OfficialColors.default_text_subtle}
+  px-6 py-4 text-sm font-semibold
+  ${OfficialColors.default_text_accent}
 `;
 
 export const TABLE_ROW_CLASSES = `
@@ -28,8 +28,8 @@ export const TABLE_ROW_CLASSES = `
 `;
 
 export const TABLE_CELL_CLASSES = `
-  px-6 py-4 text-sm
-  ${OfficialColors.default_text_accent}
+  px-6 py-4 text-sm cursor-pointer
+  ${OfficialColors.default_text_medium}
 `;
 
 export const EMPTY_STATE_CLASSES = `

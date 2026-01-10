@@ -2,13 +2,19 @@
   @if (title() || description()) {
     <header>
       <div class="flex items-center gap-2">
+        @if (leadingIcon()) {
+          <fa-icon [icon]="leadingIcon()!" class="text-zinc-400 dark:text-zinc-500"></fa-icon>
+        }
         @if (title()) {
-          <app-title [label]="title()!" size="md" weight="semibold"></app-title>
+          <app-title [label]="title()!" size="sm" weight="semibold" class="flex-1"></app-title>
+        }
+        @if (trailingIcon()) {
+          <fa-icon [icon]="trailingIcon()!" class="text-zinc-400 dark:text-zinc-500"></fa-icon>
         }
         @if (isClickable()) {
           <fa-icon 
             [icon]="faArrowRight" 
-            class="text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
+            class="text-zinc-950 dark:text-zinc-50 group-hover:translate-x-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
           ></fa-icon>
         }
       </div>

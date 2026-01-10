@@ -1,0 +1,115 @@
+<app-page-container>
+  <!-- Header -->
+  <header class="mb-10 flex flex-col gap-2">
+    <a routerLink="/dashboard/profile" class="group inline-flex items-center gap-2 text-zinc-500 hover:text-green-600 transition-all duration-300 mb-2 cursor-pointer w-fit">
+      <div class="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 group-hover:bg-green-50 dark:group-hover:bg-green-900/30 transition-colors">
+        <fa-icon [icon]="faChevronLeft" class="text-xs"></fa-icon>
+      </div>
+      <span class="text-sm font-semibold tracking-tight">Volver al perfil</span>
+    </a>
+    <h1 class="text-3xl font-extrabold tracking-tight dark:text-white">Preferencias</h1>
+    <p class="text-zinc-500 dark:text-zinc-400 max-w-lg">Personaliza tu entorno de trabajo en Vitalflow para adaptarlo a tus necesidades y estilo.</p>
+  </header>
+
+  <div class="max-w-4xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+    
+    <!-- Theme Selection Section -->
+    <app-card 
+      title="Apariencia y Tema" 
+      description="Selecciona el ambiente visual que prefieras usar en la plataforma."
+      [leadingIcon]="faPalette"
+      additionalClasses="!p-8 !rounded-[2.5rem]"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+        <!-- Light Theme -->
+        <div 
+          (click)="toggleTheme(Theme.LIGHT)"
+          class="relative group cursor-pointer"
+        >
+          <div 
+            [class.border-green-500]="activeTheme() === Theme.LIGHT"
+            [class.ring-4]="activeTheme() === Theme.LIGHT"
+            [class.ring-green-500/10]="activeTheme() === Theme.LIGHT"
+            class="h-52 rounded-[2rem] border-2 border-zinc-100 dark:border-zinc-800 bg-white p-6 flex flex-col justify-between transition-all duration-500 group-hover:border-zinc-200 overflow-hidden"
+          >
+             <div class="space-y-2 opacity-40 group-hover:opacity-100 transition-opacity">
+               <div class="w-1/2 h-2 bg-zinc-100 rounded-full"></div>
+               <div class="w-3/4 h-2 bg-zinc-50 rounded-full"></div>
+               <div class="grid grid-cols-3 gap-2 mt-4">
+                 <div class="h-10 bg-zinc-100 rounded-xl"></div>
+                 <div class="h-10 bg-zinc-100 rounded-xl"></div>
+                 <div class="h-10 bg-green-500/10 rounded-xl"></div>
+               </div>
+             </div>
+
+             <div class="flex justify-between items-center relative z-10">
+               <div class="flex items-center gap-4">
+                 <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-500 shadow-sm border border-amber-100">
+                   <fa-icon [icon]="faSun" class="text-lg"></fa-icon>
+                 </div>
+                 <span class="font-extrabold text-zinc-900 tracking-tight italic">Modo Claro</span>
+               </div>
+               @if (activeTheme() === Theme.LIGHT) {
+                 <div class="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center text-white scale-110 shadow-lg shadow-green-500/40">
+                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                 </div>
+               }
+             </div>
+          </div>
+        </div>
+
+        <!-- Dark Theme -->
+        <div 
+          (click)="toggleTheme(Theme.DARK)"
+          class="relative group cursor-pointer"
+        >
+          <div 
+            [class.border-green-500]="activeTheme() === Theme.DARK"
+            [class.ring-4]="activeTheme() === Theme.DARK"
+            [class.ring-green-500/10]="activeTheme() === Theme.DARK"
+            class="h-52 rounded-[2rem] border-2 border-zinc-100 dark:border-zinc-800 bg-zinc-900 p-6 flex flex-col justify-between transition-all duration-500 group-hover:border-zinc-700 overflow-hidden"
+          >
+             <div class="space-y-2 opacity-40 group-hover:opacity-100 transition-opacity">
+               <div class="w-1/2 h-2 bg-zinc-800 rounded-full"></div>
+               <div class="w-3/4 h-2 bg-zinc-800/50 rounded-full"></div>
+               <div class="grid grid-cols-3 gap-2 mt-4">
+                 <div class="h-10 bg-zinc-800 rounded-xl"></div>
+                 <div class="h-10 bg-zinc-800 rounded-xl"></div>
+                 <div class="h-10 bg-green-500/20 rounded-xl"></div>
+               </div>
+             </div>
+
+             <div class="flex justify-between items-center relative z-10">
+               <div class="flex items-center gap-4">
+                 <div class="w-12 h-12 rounded-2xl bg-indigo-900/40 flex items-center justify-center text-indigo-400 shadow-sm border border-indigo-500/30">
+                   <fa-icon [icon]="faMoon" class="text-lg"></fa-icon>
+                 </div>
+                 <span class="font-extrabold text-white tracking-tight italic">Modo Oscuro</span>
+               </div>
+               @if (activeTheme() === Theme.DARK) {
+                 <div class="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center text-white scale-110 shadow-lg shadow-green-500/40">
+                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                 </div>
+               }
+             </div>
+          </div>
+        </div>
+      </div>
+    </app-card>
+
+    <!-- Language Selection Section -->
+    <app-card 
+      title="Idioma y Región" 
+      description="Personaliza el idioma de la interfaz y la configuración de tu zona horaria local."
+      [leadingIcon]="faLanguage"
+      additionalClasses="!p-8 !rounded-[2.5rem]"
+    >
+      <div class="mt-8 flex flex-wrap gap-3">
+        <button class="px-6 py-3 rounded-2xl bg-green-500 text-white text-sm font-bold transition-transform hover:scale-105 active:scale-95">Español (ES)</button>
+        <button class="px-6 py-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-sm font-bold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all hover:scale-105 active:scale-95">English (US)</button>
+        <button class="px-6 py-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-sm font-bold hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all hover:scale-105 active:scale-95">Français (FR)</button>
+      </div>
+    </app-card>
+
+  </div>
+</app-page-container>

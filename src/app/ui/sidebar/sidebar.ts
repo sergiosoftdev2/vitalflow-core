@@ -3,19 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { 
-  faUsers, 
   faSearch, 
   faBars, 
-  faChartLine,
-  faCalendar,
-  faUsersBetweenLines,
-  faBuilding,
   faUser,
-  faSignOut,
-  faChartPie
+  faSignOut
 } from '@fortawesome/free-solid-svg-icons';
 import { LayoutService } from '../../services/layout.service';
-import { SidebarItem } from './sidebar.enum';
+import { SidebarService } from '../../services/sidebar.service';
 import { 
   SIDEBAR_BASE_CLASSES, 
   SIDEBAR_ITEM_CLASSES, 
@@ -24,7 +18,7 @@ import {
 import { InputSearchComponent } from "../input-search/input-search";
 import { BadgeComponent } from "../badge/badge";
 import { AvatarComponent } from "../avatar/avatar";
-import { SessionService } from '../../services/session.service';
+import { SessionService } from '../../../core/services/session.service';
 import { ContextMenuDirective } from '../context-menu/context-menu.directive';
 import { ContextMenuItem } from '../context-menu/context-menu';
 import { Router } from '@angular/router';
@@ -41,6 +35,8 @@ export class SidebarComponent {
   sessionService = inject(SessionService);
   router = inject(Router);
 
+  sidebarService = inject(SidebarService);
+
   profile = this.sessionService.user;
 
   baseClasses = SIDEBAR_BASE_CLASSES;
@@ -54,19 +50,7 @@ export class SidebarComponent {
     { label: 'Cerrar sesión', icon: faSignOut, action: () => this.sessionService.clearSession() },
   ];
 
-  menuItems: SidebarItem[] = [
-    { label: 'Vista general', icon: faChartPie, route: '/dashboard' },
-    { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
-    { label: 'Design System', icon: faCalendar, route: '/dashboard/design-system' },
-    { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
-    { 
-      label: 'Informes', 
-      icon: faChartLine, 
-      route: '/dashboard/branding',
-      badge: { value: 'New', color: 'success' }
-    },
-    { label: 'Clientes', icon: faUsersBetweenLines, route: '/dashboard/api' }
-  ];
+  menuItems = this.sidebarService.items;
 
   openProfile() {
     this.onItemClick();

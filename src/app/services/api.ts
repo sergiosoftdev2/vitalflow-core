@@ -11,8 +11,20 @@ export class ApiService {
   private readonly apiUrl = environment.apiUrl;
   
 
-  get(endpoint: string) {
-    return this.httpClient.get(`${this.apiUrl}/${endpoint}`);
+  get<T>(endpoint: string) {
+    return this.httpClient.get<T>(`${this.apiUrl}/${endpoint}`);
+  }
+
+  set<T>(endpoint: string, data: T) {
+    return this.httpClient.post<T>(`${this.apiUrl}/${endpoint}`, data);
+  }
+
+  patch<T>(endpoint: string, data: Partial<T>) {
+    return this.httpClient.patch<T>(`${this.apiUrl}/${endpoint}`, data);
+  }
+
+  delete<T>(endpoint: string) {
+    return this.httpClient.delete<T>(`${this.apiUrl}/${endpoint}`);
   }
 
 }

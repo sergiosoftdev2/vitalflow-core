@@ -1,5 +1,6 @@
 <button 
   [ngClass]="buttonClasses()" 
+  [disabled]="disabled()"
   (click)="onHandlerClick($event)"
 >
   @if (leadingIcon()) {

@@ -24,7 +24,9 @@ export const buttonSizes = {
   [COMPONENT_SIZES.sm]: 'h-8 text-sm px-4 py-2',
   [COMPONENT_SIZES.base]: 'h-10 text-sm px-4 py-2',
   [COMPONENT_SIZES.md]: 'h-12 text-base px-4 py-2',
-  [COMPONENT_SIZES.lg]: 'h-14 text-lg px-6 py-3'
+  [COMPONENT_SIZES.lg]: 'h-14 text-lg px-6 py-3',
+  [COMPONENT_SIZES.xl]: 'h-16 text-xl px-8 py-4',
+  [COMPONENT_SIZES['2xl']]: 'h-20 text-2xl px-10 py-5'
 }
 
 export const BASE_CLASSES = `

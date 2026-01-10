@@ -1,29 +1,34 @@
 <app-page-container>
   
-  <header class="flex items-center gap-4">
-    <app-avatar
-      [src]="myProfile()?.picture || ''" 
-      [alt]="myProfile()?.firstName || 'Avatar'"
-      size="lg"
-      [initials]="(myProfile()?.firstName?.charAt(0) || '') + (myProfile()?.lastName?.charAt(0) || '')"
-    ></app-avatar>
-    <div>
-      <h1 class="text-xl sm:text-2xl dark:text-zinc-50 text-zinc-950 font-semibold">{{ myProfile()?.firstName | firstLetter }} {{ myProfile()?.lastName | firstLetter }}</h1>
-      <p class="text-zinc-500 text-sm sm:text-base">Gestiona tu información personal y preferencias.</p>
+  <header class="flex flex-col sm:flex-row items-center gap-6 mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
+    <div class="relative group">
+      <app-avatar
+        [src]="myProfile()?.picture || ''" 
+        [alt]="myProfile()?.firstName || 'Avatar'"
+        size="2xl"
+        [initials]="(myProfile()?.firstName?.charAt(0) || '') + (myProfile()?.lastName?.charAt(0) || '')"
+        viewTransitionName="profile-avatar"
+      ></app-avatar>
+    </div>
+    <div class="text-center sm:text-left space-y-1">
+      <app-title size="xl" weight="bold" [label]="myProfile()?.firstName + ' ' + myProfile()?.lastName"></app-title>
+      <p class="text-zinc-500 text-base sm:text-lg max-w-md font-medium">
+        Bienvenido a tu centro de configuración. Aquí puedes ajustar cómo interactúas con Vitalflow.
+      </p>
     </div>
   </header>
 
-  <hr class="my-4 border-zinc-200 dark:border-zinc-800">
-
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
     
     @for (card of cards; track $index) {
       <app-card 
         [title]="card.title" 
         [description]="card.description" 
+        [leadingIcon]="card.icon"
         [isClickable]="true"
         [routerLink]="card.route"
-      ></app-card>
+      >
+      </app-card>
     }
 
   </section>

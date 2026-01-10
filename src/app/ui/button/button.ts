@@ -22,6 +22,7 @@ export class ButtonComponent {
   size = input<COMPONENT_SIZE>(COMPONENT_SIZES.base);
   isFullWidth = input<boolean>(false);
   isBold = input<boolean>(false);
+  disabled = input<boolean>(false);
 
   handler = output<MouseEvent>();
 
@@ -36,12 +37,12 @@ export class ButtonComponent {
 
     return [
       BASE_CLASSES,
-      colorClasses,
-      buttonVariantClasses[variant],
+      !this.disabled() ? colorClasses : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-600 cursor-not-allowed',
+      !this.disabled() ? buttonVariantClasses[variant] : '',
       buttonSizes[size],
       this.isFullWidth() ? 'w-full' : '',
       this.isBold() ? 'font-bold' : 'font-medium'
-    ]
+    ].filter(Boolean);
   })
 
   isIconDefinition(icon: string | IconDefinition | undefined): icon is IconDefinition {

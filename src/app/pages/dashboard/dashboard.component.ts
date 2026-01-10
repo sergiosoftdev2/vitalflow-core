@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { PageContainerComponent } from "../../ui/container/container";
 import { TitleComponent } from "../../ui/title/title";
-import { SessionService } from '../../services/session.service';
-import { CardComponent } from '../../ui/card/card';
-import { ButtonComponent } from '../../ui/button/button';
+import { SessionService } from '../../../core/services/session.service';
+import { CardComponent } from '../../ui/card/card'; 
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faWallet, faCalendarCheck, faArrowRight, faCalendarDay, faChartLine } from '@fortawesome/free-solid-svg-icons';

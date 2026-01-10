@@ -22,7 +22,6 @@ import { BadgeComponent } from '../badge/badge';
   templateUrl: './table.html',
 })
 export class TableComponent {
-  // Inputs using Signals
   data = input.required<any[]>();
   columns = input.required<TableColumn[]>();
   isLoading = input<boolean>(false);

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SessionService } from './session.service';
-import { User } from '../interfaces/user.interface';
+import { User } from '../../app/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'

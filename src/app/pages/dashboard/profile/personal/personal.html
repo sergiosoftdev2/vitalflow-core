@@ -1,0 +1,104 @@
+<app-page-container>
+  <!-- Header -->
+  <header class="mb-10 flex flex-col gap-2">
+    <a routerLink="/dashboard/profile" class="group inline-flex items-center gap-2 text-zinc-500 hover:text-green-600 transition-all duration-300 mb-2 cursor-pointer w-fit">
+      <div class="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 group-hover:bg-green-50 dark:group-hover:bg-green-900/30 transition-colors">
+        <fa-icon [icon]="faChevronLeft" class="text-xs"></fa-icon>
+      </div>
+      <span class="text-sm font-semibold tracking-tight">Volver al perfil</span>
+    </a>
+    <h1 class="text-3xl font-extrabold tracking-tight dark:text-white">Información Personal</h1>
+    <p class="text-zinc-500 dark:text-zinc-400 max-w-lg">Configura tu identidad en la plataforma y mantén tus datos de contacto actualizados para una mejor experiencia.</p>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+    <div class="lg:col-span-1 space-y-6">
+      <app-card>
+        <div class="flex flex-col items-center py-10 bg-linear-to-b from-zinc-50/50 to-transparent dark:from-zinc-800/20">
+          <app-avatar
+            [src]="myProfile()?.picture || ''" 
+            [alt]="myProfile()?.firstName || 'Avatar'"
+            size="2xl"
+            [initials]="(myProfile()?.firstName?.charAt(0) || '') + (myProfile()?.lastName?.charAt(0) || '')"
+            viewTransitionName="profile-avatar"
+          ></app-avatar>
+          
+          <div class="mt-6 text-center px-6">
+            <app-title size="sm" weight="bold" [label]="myProfile()?.firstName + ' ' + myProfile()?.lastName"></app-title>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{{ myProfile()?.email }}</p>
+          </div>
+
+          @if (isGoogleUser()) {
+            <div class="mt-6 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-900/30 flex items-center gap-2">
+              <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">Google Verified</span>
+            </div>
+          }
+        </div>
+      </app-card>
+
+      <!-- Security Notice -->
+      <div class="p-6 bg-amber-50 dark:bg-amber-900/10 rounded-2xl mt-4 border border-amber-100 dark:border-amber-900/20 shadow-sm">
+        <p class="text-xs leading-relaxed text-amber-700 dark:text-amber-400 font-medium">
+          <span class="font-bold flex items-center gap-2 mb-2 uppercase tracking-widest text-[10px]">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            Seguridad de la cuenta
+          </span>
+          Recuerda que los cambios en tu correo electrónico pueden requerir una nueva verificación por motivos de seguridad.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Column: Form -->
+    <div class="lg:col-span-2 space-y-6">
+      <app-card 
+        title="Editor de Perfil" 
+        description="Actualiza tu información pública y privada. Recuerda guardar cada cambio."
+        [leadingIcon]="faUserEdit"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="space-y-2">
+            <app-input-text 
+              label="Nombre Real" 
+              [(value)]="firstName"
+              placeholder="Escribe tu nombre"
+            ></app-input-text>
+          </div>
+          <div class="space-y-2">
+            <app-input-text 
+              label="Apellidos" 
+              [(value)]="lastName"
+              placeholder="Escribe tus apellidos"
+            ></app-input-text>
+          </div>
+          <div class="md:col-span-2 space-y-2 relative">
+            <app-input-text 
+              label="Correo Electrónico" 
+              [(value)]="email"
+              [disabled]="isGoogleUser()"
+              placeholder="ejemplo@correo.com"
+            ></app-input-text>
+            @if (isGoogleUser()) {
+              <div class="p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl border border-zinc-100 dark:border-zinc-800 mt-4">
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 italic font-medium">
+                  💡 El correo está vinculado a tu cuenta de Google y no puede ser modificado aquí.
+                </p>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-end gap-3 mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800">
+          <app-button 
+            label="Guardar Cambios" 
+            [leadingIcon]="faSave" 
+            class="order-1 sm:order-2"
+            [disabled]="hasNoChanges()"
+            (handler)="saveChanges()"
+          ></app-button>
+        </div>
+      </app-card>
+    </div>
+
+  </div>
+</app-page-container>

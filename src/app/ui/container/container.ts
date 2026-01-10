@@ -20,7 +20,7 @@ export class PageContainerComponent {
 
   containerClasses = computed(() => 
     PAGE_CONTAINER_CLASSES + 
-    (this.isFullSize() ? ' h-dvh w-full' : 'max-w-4xl mx-auto min-h-dvh') + 
+    (this.isFullSize() ? ' h-dvh w-full' : 'max-w-4xl mx-auto min-h-0 sm:min-h-dvh') + 
     (this.isOverflowHidden() ? ' overflow-hidden ' : ' ') +
     this.additionalClasses()
   );

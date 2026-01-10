@@ -1,0 +1,95 @@
+<app-page-container>
+  <!-- Header -->
+  <header class="mb-10 flex flex-col gap-2">
+    <a routerLink="/dashboard/profile" class="group inline-flex items-center gap-2 text-zinc-500 hover:text-green-600 transition-all duration-300 mb-2 cursor-pointer w-fit">
+      <div class="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 group-hover:bg-green-50 dark:group-hover:bg-green-900/30 transition-colors">
+        <fa-icon [icon]="faChevronLeft" class="text-xs"></fa-icon>
+      </div>
+      <span class="text-sm font-semibold tracking-tight">Volver al perfil</span>
+    </a>
+    <h1 class="text-3xl font-extrabold tracking-tight dark:text-white">Seguridad</h1>
+    <p class="text-zinc-500 dark:text-zinc-400 max-w-lg">Gestiona el acceso a tu cuenta y mantén tu información protegida con las mejores prácticas de seguridad.</p>
+  </header>
+
+  <div class="max-w-3xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+    
+    <!-- Google Auth Section -->
+    @if (isGoogleUser()) {
+       <div class="relative overflow-hidden p-8 bg-zinc-900 text-white rounded-[2.5rem] shadow-2xl border border-white/5">
+          <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-inner">
+               <img src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" class="w-8 h-8" alt="Google">
+            </div>
+            <div class="flex-1 text-center md:text-left space-y-2">
+              <h2 class="text-xl font-bold italic tracking-tight">Acceso Gestionado por Google</h2>
+              <p class="text-zinc-400 text-sm leading-relaxed font-medium">
+                Tu seguridad está delegada a Google Auth. Para cambiar tu clave o activar la verificación en dos pasos, debes hacerlo desde tu cuenta de Google.
+              </p>
+            </div>
+            <app-button label="Ir a Google" variant="ghost" class="text-white hover:bg-white/10" size="sm"></app-button>
+          </div>
+          
+          <!-- Background Decoration -->
+          <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/20 rounded-full blur-[80px]"></div>
+          <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-red-500/10 rounded-full blur-[80px]"></div>
+       </div>
+    } @else {
+      <!-- traditional Password Form -->
+      <app-card 
+        title="Cambiar Contraseña" 
+        description="Te recomendamos usar una combinación de letras, números y símbolos para una mayor seguridad."
+        [leadingIcon]="faKey"
+        additionalClasses="!p-8 !rounded-[2.5rem]"
+      >
+        <div class="space-y-6 mt-8">
+          <app-input-password label="Contraseña Actual" placeholder="Ingresa tu contraseña actual"></app-input-password>
+          <hr class="border-zinc-100 dark:border-zinc-800">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <app-input-password label="Nueva Contraseña" placeholder="Mínimo 8 caracteres"></app-input-password>
+            <app-input-password label="Repetir Nueva Contraseña" placeholder="Confirma tu nueva clave"></app-input-password>
+          </div>
+          
+          <div class="p-6 bg-zinc-50 dark:bg-zinc-800/40 rounded-3xl border border-zinc-100 dark:border-zinc-800 text-[11px]">
+            <h4 class="font-bold mb-3 dark:text-zinc-200 uppercase tracking-widest opacity-60">Requerimientos:</h4>
+            <ul class="space-y-2 font-medium">
+              <li class="flex items-center gap-2 text-zinc-500">
+                <div class="w-1 h-1 rounded-full bg-green-500"></div> Al menos 8 caracteres
+              </li>
+              <li class="flex items-center gap-2 text-zinc-500">
+                <div class="w-1 h-1 rounded-full bg-green-500"></div> Símbolo especial y mayúscula
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-800">
+          <app-button label="Actualizar Credenciales" [leadingIcon]="faSave" class="w-full sm:w-auto"></app-button>
+        </div>
+      </app-card>
+    }
+
+    <!-- Sessions Section -->
+    <app-card 
+      title="Sesiones Activas" 
+      description="Revisa y gestiona los dispositivos activos donde has iniciado sesión recientemente."
+      [leadingIcon]="faDesktop"
+      additionalClasses="!p-8 !rounded-[2.5rem]"
+    >
+      <div class="mt-8 divide-y divide-zinc-100 dark:divide-zinc-800">
+        <div class="py-6 flex items-center justify-between group">
+          <div class="flex items-center gap-5">
+            <div class="w-12 h-12 rounded-2xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 shadow-sm group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <div class="text-sm font-bold dark:text-zinc-100 italic">Chrome en macOS</div>
+              <div class="text-[10px] text-zinc-400 font-bold uppercase tracking-tight">Madrid, España · <span class="text-green-500">En línea ahora</span></div>
+            </div>
+          </div>
+          <app-badge color="success" variant="subtle">Dispositivo Actual</app-badge>
+        </div>
+      </div>
+    </app-card>
+
+  </div>
+</app-page-container>
