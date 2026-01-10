@@ -3,6 +3,7 @@ import { PageContainerComponent } from "../../../ui/container/container";
 import { TitleComponent } from "../../../ui/title/title";
 import { TableColumn, TableComponent } from "../../../ui/table/table";
 import { UserService } from "../../../services/user.service";
+import { UserDto } from "../../../core/api/models";
 
 @Component({
     selector: 'app-employees',
@@ -25,5 +26,10 @@ export class EmployeesComponent {
       this.myEmployees.set(users as any);
     });
   }
-    
+
+  onRowClick(user: UserDto) {
+    this.userService.getUser(user._id).subscribe((user) => {
+      console.log(user);
+    });
+  }    
 }

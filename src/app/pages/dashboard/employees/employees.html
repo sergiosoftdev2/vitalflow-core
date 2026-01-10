@@ -1,4 +1,4 @@
 <app-page-container>
     <app-title>Employees</app-title>
-    <app-table [data]="myEmployees()" [columns]="columns()"></app-table>
+    <app-table [data]="myEmployees()" (rowClick)="onRowClick($event)" [columns]="columns()"></app-table>
 </app-page-container>

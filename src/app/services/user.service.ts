@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { User } from '../interfaces/user.interface';
 import { SessionService } from '../../core/services/session.service';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { ApiService } from './api';
+import { UserDto } from '../core/api/models/user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +11,20 @@ export class UserService {
   private apiService = inject(ApiService);
   private sessionService = inject(SessionService);
 
-  updateUser(id: string, userData: Partial<User>) {
-    return this.apiService.patch<User>(`users/${id}`, userData).pipe(
+  updateUser(id: string, userData: Partial<UserDto>): Observable<UserDto> {
+    return this.apiService.patch<UserDto>(`users/${id}`, userData).pipe(
       tap(updatedUser => {
         this.sessionService.setUser(updatedUser);
       })
     );
   }
 
-  getUser(id: string) {
-    return this.apiService.get<User>(`users/${id}`);
+  getUser(id: string): Observable<UserDto> {
+    return this.apiService.get<UserDto>(`users/${id}`);
   }
 
-  getAllUsers() {
-    return this.apiService.get<User[]>(`users`);
+  getAllUsers(): Observable<UserDto[]> {
+    return this.apiService.get<UserDto[]>(`users`);
   }
 
 }
