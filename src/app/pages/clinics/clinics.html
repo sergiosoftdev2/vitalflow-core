@@ -1,0 +1,40 @@
+<app-page-container>
+  <app-title 
+    label="Mis Clínicas" 
+    size="xl"
+    [actionLabel]="myClinics.length > 0 ? 'Nueva clínica' : undefined"
+    [actionIcon]="faPlus"
+    (action)="isCreateModalOpen.set(true)"
+  ></app-title>
+  <div 
+    class="grid sm:grid-cols-1 md:grid-cols-2 h-full gap-4"
+    [ngClass]="[myClinics.length === 0 ? 'flex-1 mt-4' : 'h-auto']"
+  >
+    @if(myClinics.length > 0) {
+      @for(clinic of myClinics; track $index) {
+        <app-card [title]="clinic.name" [description]="clinic.address" [isClickable]="true" (handler)="navigateToClinic(clinic)">
+          <div class="max-h-[200px] rounded-2xl overflow-hidden flex items-center justify-center">
+            <img class="w-full h-full object-cover" [src]="clinic.logo" alt="">
+          </div>
+        </app-card>
+      }
+    } @else {
+      <div class="sm:col-span-1 md:col-span-2">
+        <app-empty-state 
+          [icon]="faBuilding" 
+          title="No tienes clínicas"
+          description="Crea tu primera clínica para comenzar a gestionar tus citas y pacientes"
+          primaryActionLabel="Crear clínica"
+          [primaryActionIcon]="faPlus"
+          (primaryAction)="isCreateModalOpen.set(true)"
+        ></app-empty-state>
+      </div>
+    }
+
+  </div>
+
+  <app-create-clinic-modal
+    [(isOpen)]="isCreateModalOpen"
+    (clinicCreated)="ngOnInit()"
+  ></app-create-clinic-modal>
+</app-page-container>

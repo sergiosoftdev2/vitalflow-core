@@ -8,30 +8,38 @@ import {
   faUsersBetweenLines 
 } from '@fortawesome/free-solid-svg-icons';
 
+const DEFAULT_SIDEBAR_ITEMS: SidebarItem[] = [
+  { label: 'Vista general', icon: faChartPie, route: '/dashboard' },
+  { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
+  { label: 'Design System', icon: faCalendar, route: '/dashboard/design-system' },
+  { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
+  { 
+    label: 'Informes', 
+    icon: faChartLine, 
+    route: '/dashboard/branding',
+    badge: { value: 'New', color: 'success' }
+  },
+  { label: 'Clientes', icon: faUsersBetweenLines, route: '/dashboard/clients' }
+];
+
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
   
-  private readonly _items = signal<SidebarItem[]>([
-    { label: 'Vista general', icon: faChartPie, route: '/dashboard' },
-    { label: 'Mis clínicas', icon: faBuilding, route: '/dashboard/clinics' },
-    { label: 'Design System', icon: faCalendar, route: '/dashboard/design-system' },
-    { label: 'Agenda', icon: faCalendar, route: '/dashboard/schedule' },
-    { 
-      label: 'Informes', 
-      icon: faChartLine, 
-      route: '/dashboard/branding',
-      badge: { value: 'New', color: 'success' }
-    },
-    { label: 'Clientes', icon: faUsersBetweenLines, route: '/dashboard/clients' }
-  ]);
+  private readonly _items = signal<SidebarItem[]>(DEFAULT_SIDEBAR_ITEMS);
 
   readonly items = this._items.asReadonly();
 
   setItems(items: SidebarItem[]) {
     this._items.set(items);
   }
+
+  reset() {
+    this._items.set(DEFAULT_SIDEBAR_ITEMS);
+  }
+
+
 
   updateItem(index: number, item: SidebarItem) {
     this._items.update(items => {

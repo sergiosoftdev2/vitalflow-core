@@ -1,0 +1,40 @@
+<div [class]="containerClasses()">
+  <!-- Icon -->
+  <div [class]="iconContainerClasses()">
+    <fa-icon [icon]="icon()" class="text-zinc-400 dark:text-zinc-500"></fa-icon>
+  </div>
+
+  <!-- Content -->
+  <h3 [class]="textStyles.title" [class.text-lg]="size() === 'sm'" [class.text-2xl]="size() !== 'sm'">
+    {{ title() }}
+  </h3>
+  
+  @if (description()) {
+    <p [class]="textStyles.description" [class.text-sm]="size() === 'sm'">
+      {{ description() }}
+    </p>
+  }
+
+  <!-- Actions -->
+  @if (primaryActionLabel() || secondaryActionLabel()) {
+    <div class="flex flex-col sm:flex-row gap-3 mt-2 justify-center w-auto">
+      @if (secondaryActionLabel()) {
+        <app-button 
+          [label]="secondaryActionLabel()!" 
+          variant="outlined" 
+          color="secondary"
+          [leadingIcon]="secondaryActionIcon()"
+          (handler)="onSecondaryClick()">
+        </app-button>
+      }
+      
+      @if (primaryActionLabel()) {
+        <app-button 
+          [label]="primaryActionLabel()!" 
+          [leadingIcon]="primaryActionIcon()"
+          (handler)="onPrimaryClick()">
+        </app-button>
+      }
+    </div>
+  }
+</div>

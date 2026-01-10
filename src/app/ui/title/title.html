@@ -1,0 +1,18 @@
+<div class="flex items-center justify-between w-full gap-4">
+  <h1 [class]="textClasses()">
+    @if (label()) {
+      {{ label() }}
+    } @else {
+      <ng-content></ng-content>
+    }
+  </h1>
+
+  @if (actionLabel()) {
+    <app-button 
+      [label]="actionLabel()!" 
+      [leadingIcon]="actionIcon()" 
+      [variant]="actionVariant()"
+      (handler)="onAction($event)"
+    ></app-button>
+  }
+</div>

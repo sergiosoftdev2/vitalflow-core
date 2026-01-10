@@ -8,11 +8,16 @@ import { PreferencesComponent } from './profile/preferences/preferences';
 import { ScheduleComponent } from './schedule/schedule';
 import { DesignSystemComponent } from '../design-system/design-system';
 import { EmployeesComponent } from './employees/employees';
+import { ClinicsComponent } from '../clinics/clinics';
 
 export const DASHBOARD_ROUTES: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'clients', component: EmployeesComponent },
+  { 
+    path: 'clinics', 
+    loadChildren: () => import('../clinics/clinics.routes').then(m => m.CLINICS_ROUTES) 
+  },
   { 
     path: 'profile', 
     children: [

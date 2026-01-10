@@ -6,17 +6,17 @@ import { UserDto } from '../models/user-dto';
 export interface ClinicDto {
   address: string;
   adminIds: Array<string>;
-  closingHours: string;
+  closingHours?: string;
   createdAt: string;
-  email: string;
-  employeeIds: Array<UserDto>;
-  feesPercentage: number;
-  id: string;
-  logo: string;
+  email?: string;
+  employeeIds?: Array<UserDto>;
+  feesPercentage?: number;
+  id?: string;
+  logo?: string;
   name: string;
-  openingHours: string;
-  phone: string;
-  rooms: Array<RoomDto>;
+  openingHours?: string;
+  phone?: string;
+  rooms?: Array<RoomDto>;
   updatedAt: string;
   website?: string;
 }

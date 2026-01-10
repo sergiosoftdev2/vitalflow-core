@@ -26,7 +26,7 @@ export const MODAL_CONTENT_CLASSES = `
 
 export const MODAL_FOOTER_CLASSES = `
   px-6 py-5 bg-zinc-50/50 dark:bg-zinc-800/50 border-t border-zinc-100 dark:border-zinc-800
-  flex flex-row-reverse gap-3
+  flex flex-col sm:flex-row-reverse gap-3
 `;
 
 export const CLOSE_BUTTON_CLASSES = `

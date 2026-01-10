@@ -60,19 +60,21 @@
       @if (primaryActionLabel() || secondaryActionLabel()) {
         <footer [class]="footerClasses()">
           @if (primaryActionLabel()) {
-            <app-button 
+            <app-button
+              [isFullWidth]="isMobile()"
               [label]="primaryActionLabel()!" 
               (click)="onPrimaryAction()"
-              size="base"
+              [size]="isMobile() ? 'lg' : 'base'"
             ></app-button>
           }
           
           @if (secondaryActionLabel()) {
-            <app-button 
+            <app-button
+              [isFullWidth]="isMobile()"
               [label]="secondaryActionLabel()!" 
-              variant="outlined" 
+              color="secondary" 
               (click)="onSecondaryAction()"
-              size="base"
+              [size]="isMobile() ? 'lg' : 'base'"
             ></app-button>
           }
         </footer>

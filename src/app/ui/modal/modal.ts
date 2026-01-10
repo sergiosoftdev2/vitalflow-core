@@ -1,4 +1,4 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -6,6 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '../button/button';
 import { TitleComponent } from '../title/title';
 import * as Constants from './modal.constants';
+import { ViewportService } from '../../core/services/viewport.service';
 
 @Component({
   selector: 'app-modal',
@@ -34,6 +35,8 @@ import * as Constants from './modal.constants';
   ]
 })
 export class ModalComponent {
+  private readonly viewportService = inject(ViewportService);
+
   // Inputs using Signals API
   isOpen = input.required<boolean>();
   title = input<string>();
@@ -57,6 +60,8 @@ export class ModalComponent {
   contentClasses = computed(() => Constants.MODAL_CONTENT_CLASSES);
   footerClasses = computed(() => Constants.MODAL_FOOTER_CLASSES);
   closeBtnClasses = computed(() => Constants.CLOSE_BUTTON_CLASSES);
+
+  isMobile = computed(() => this.viewportService.isMobile());
 
   // Drag state for bottom sheet
   isDragging = signal(false);
