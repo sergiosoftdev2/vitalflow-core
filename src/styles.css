@@ -69,3 +69,31 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+/* Custom Scrollbar */
+@layer base {
+  * {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-zinc-300) transparent;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+    border: 2px solid transparent; /* Crea un efecto de padding */
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-400 dark:bg-zinc-600;
+  }
+}

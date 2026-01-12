@@ -1,6 +1,6 @@
 export const OfficialColors = {
-  primary_bg_color: 'bg-green-500 border-green-400 hover:bg-green-600 dark:hover:bg-green-400 active:bg-green-700 dark:active:bg-green-600',
-  primary_text_color: 'text-green-950',
+  primary_bg_color: 'bg-green-500 dark:bg-green-400 border-green-400 hover:bg-green-600 dark:hover:bg-green-400 active:bg-green-700 dark:active:bg-green-600',
+  primary_text_color: 'text-green-950 dark:text-black',
   secondary_bg_color: 'bg-zinc-950 dark:bg-zinc-100 border-zinc-400 hover:bg-zinc-700 dark:hover:bg-zinc-300 active:bg-zinc-500 dark:active:bg-zinc-600',
   secondary_text_color: 'text-zinc-50 dark:text-zinc-950',
   destructive_bg_color: 'bg-red-500 border-red-400 hover:bg-red-600 dark:hover:bg-red-400 active:bg-red-700 dark:active:bg-red-600',
