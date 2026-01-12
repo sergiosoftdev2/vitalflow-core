@@ -43,3 +43,13 @@ export type { AppointmentsControllerRemove$Params as AppointmentsControllerRemov
 export { appointmentsControllerRemove as appointmentsControllerRemove } from './fn/appointments/appointments-controller-remove';
 export type { AppointmentsControllerUpdate$Params as AppointmentsControllerUpdate$Params } from './fn/appointments/appointments-controller-update';
 export { appointmentsControllerUpdate as appointmentsControllerUpdate } from './fn/appointments/appointments-controller-update';
+export type { ClientsControllerFindAll$Params as ClientsControllerFindAll$Params } from './fn/clients/clients-controller-find-all';
+export { clientsControllerFindAll as clientsControllerFindAll } from './fn/clients/clients-controller-find-all';
+export type { ClientsControllerCreate$Params as ClientsControllerCreate$Params } from './fn/clients/clients-controller-create';
+export { clientsControllerCreate as clientsControllerCreate } from './fn/clients/clients-controller-create';
+export type { ClientsControllerFindOne$Params as ClientsControllerFindOne$Params } from './fn/clients/clients-controller-find-one';
+export { clientsControllerFindOne as clientsControllerFindOne } from './fn/clients/clients-controller-find-one';
+export type { ClientsControllerRemove$Params as ClientsControllerRemove$Params } from './fn/clients/clients-controller-remove';
+export { clientsControllerRemove as clientsControllerRemove } from './fn/clients/clients-controller-remove';
+export type { ClientsControllerUpdate$Params as ClientsControllerUpdate$Params } from './fn/clients/clients-controller-update';
+export { clientsControllerUpdate as clientsControllerUpdate } from './fn/clients/clients-controller-update';

@@ -1,7 +1,7 @@
 import { TabVariant } from "./tabs.enum";
 
 export const TABS_BASE_CLASSES = `
-  flex items-center gap-1 transition-all duration-300
+  flex items-center gap-1 transition-all duration-300 w-full overflow-x-auto overflow-y-hidden
 `;
 
 export const TAB_ITEM_BASE_CLASSES = `

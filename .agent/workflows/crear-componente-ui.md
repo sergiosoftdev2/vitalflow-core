@@ -1,10 +1,10 @@
 ---
-description: Guía para crear nuevos componentes de UI siguiendo el sistema de diseño de Vitalflow
+description: Guía para crear nuevos componentes de UI siguiendo el sistema de diseño de Clinily
 ---
 
-# Guía de Creación de Componentes UI (Vitalflow)
+# Guía de Creación de Componentes UI (Clinily)
 
-Para mantener la consistencia estética y técnica en el sistema de diseño de Vitalflow, sigue estas reglas al crear un nuevo componente desde cero.
+Para mantener la consistencia estética y técnica en el sistema de diseño de , sigue estas reglas al crear un nuevo componente desde cero.
 
 ## 1. Estructura de Archivos
 Ubica el componente en `src/app/ui/[nombre-del-componente]/`.
@@ -21,7 +21,7 @@ Divide la lógica para mayor mantenibilidad:
 - Exporta constantes de clases para evitar "magic strings" en el template.
 
 ## 3. Sistema de Diseño y Estética
-Vitalflow tiene una identidad visual premium y moderna:
+ tiene una identidad visual premium y moderna:
 
 ### Colores (OfficialColors)
 - **Importante**: SIEMPRE importa y usa `OfficialColors` de `src/app/ui/colors.constants.ts`.

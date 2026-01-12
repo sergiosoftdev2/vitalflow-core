@@ -1,8 +1,8 @@
 ---
-description: Guía de arquitectura de la aplicación para crear nuevas secciones y páginas en Vitalflow
+description: Guía de arquitectura de la aplicación para crear nuevas secciones y páginas en Clinily
 ---
 
-# Guía de Arquitectura de Aplicación (Vitalflow)
+# Guía de Arquitectura de Aplicación (Clinily)
 
 Esta guía define cómo se estructuran las nuevas funcionalidades, páginas y rutas dentro del core de Vyntal para asegurar un crecimiento escalable y mantenible.
 

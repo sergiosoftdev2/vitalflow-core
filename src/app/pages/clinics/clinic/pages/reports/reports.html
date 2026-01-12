@@ -1,5 +1,4 @@
-<app-page-container [isFullSize]="true">
-  <app-title label="Informes" size="xl"></app-title>
+<app-page-container title="Informes" [isFullSize]="true">
   <app-tabs [items]="tab" variant="line" (tabChange)="onTabChange($event)" [activeId]="activeTabId"></app-tabs>
 
   @switch (activeTabId) {
