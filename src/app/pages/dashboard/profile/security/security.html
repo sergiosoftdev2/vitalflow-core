@@ -11,8 +11,30 @@
     <p class="text-zinc-500 dark:text-zinc-400 max-w-lg">Gestiona el acceso a tu cuenta y mantén tu información protegida con las mejores prácticas de seguridad.</p>
   </header>
 
-  <div class="max-w-3xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
-    
+  <div class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
+
+    <!-- Sessions Section -->
+    <app-card 
+      title="Sesiones Activas" 
+      description="Revisa y gestiona los dispositivos activos donde has iniciado sesión recientemente."
+      [leadingIcon]="faDesktop"
+      additionalClasses="!p-8 mb-8 !rounded-[2.5rem]"
+    >
+        @for (session of activeSessions(); track $index) {
+          <div [ngClass]="[colors.default_border_color, colors.default_bg_color,  'flex flex-col sm:flex-row gap-4 sm:items-center pb-4 border-b']">
+            <div class="flex gap-2 items-center text-base">
+              <i [ngClass]="iconDeviceTypeRecord[session.deviceType]"></i>
+              <div class="flex gap-2 items-center">
+                <p>Última vez </p>
+                <p>{{ session.updatedAt | date }}</p>
+              </div>
+            </div>
+
+            <app-button [isFullWidth]="isMobile()" label="Cerrar Sesión" color="destructive" variant="filled" size="sm" class="sm:ml-auto" (click)="deleteSession(session._id)"></app-button>
+          </div>
+        }
+    </app-card>
+
     <!-- Google Auth Section -->
     @if (isGoogleUser()) {
        <div class="relative overflow-hidden p-8 bg-zinc-900 text-white rounded-[2.5rem] shadow-2xl border border-white/5">
@@ -67,29 +89,6 @@
         </div>
       </app-card>
     }
-
-    <!-- Sessions Section -->
-    <app-card 
-      title="Sesiones Activas" 
-      description="Revisa y gestiona los dispositivos activos donde has iniciado sesión recientemente."
-      [leadingIcon]="faDesktop"
-      additionalClasses="!p-8 !rounded-[2.5rem]"
-    >
-      <div class="mt-8 divide-y divide-zinc-100 dark:divide-zinc-800">
-        <div class="py-6 flex items-center justify-between group">
-          <div class="flex items-center gap-5">
-            <div class="w-12 h-12 rounded-2xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 shadow-sm group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            </div>
-            <div>
-              <div class="text-sm font-bold dark:text-zinc-100 italic">Chrome en macOS</div>
-              <div class="text-[10px] text-zinc-400 font-bold uppercase tracking-tight">Madrid, España · <span class="text-green-500">En línea ahora</span></div>
-            </div>
-          </div>
-          <app-badge color="success" variant="subtle">Dispositivo Actual</app-badge>
-        </div>
-      </div>
-    </app-card>
 
   </div>
 </app-page-container>

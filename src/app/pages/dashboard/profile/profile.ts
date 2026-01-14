@@ -6,9 +6,11 @@ import { PageContainerComponent } from "../../../ui/container/container";
 import { AvatarComponent } from "../../../ui/avatar/avatar";
 import { CardComponent } from "../../../ui/card/card";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faArrowRight, faUser, faCreditCard, faShieldAlt, faAdjust } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faSignOut, faUser, faCreditCard, faShieldAlt, faAdjust } from "@fortawesome/free-solid-svg-icons";
 import { OfficialColors } from "../../../ui/colors.constants";
 import { TitleComponent } from "../../../ui/title/title";
+import { ToolsService } from "../../clinics/services/tools.service";
+import { ButtonComponent } from "../../../ui/button/button";
 
 interface configCard {
   title: string;
@@ -20,14 +22,19 @@ interface configCard {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, RouterLink, PageContainerComponent, AvatarComponent, FontAwesomeModule, CardComponent, TitleComponent],
+  imports: [CommonModule, RouterLink, PageContainerComponent, AvatarComponent, FontAwesomeModule, CardComponent, TitleComponent, ButtonComponent],
   templateUrl: './profile.html',
 })
 export class ProfileComponent {
   private readonly sessionService = inject(SessionService);
+  private readonly toolsService = inject(ToolsService);
+  
   myProfile = this.sessionService.user;
   faArrowRight = faArrowRight;
+  faSignOut = faSignOut;
   OfficialColors = OfficialColors;
+
+  isMobile = this.toolsService.isMobile;
 
   cards: configCard[] = [
     {

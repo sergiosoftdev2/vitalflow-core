@@ -18,8 +18,6 @@ import { ReportsAppointmentsComponent } from './appointments/appointments';
   imports: [
     CommonModule, 
     PageContainerComponent, 
-    TitleComponent, 
-    EmptyStateComponent, 
     TabsComponent,
     ReportsRevenueComponent,
     ReportsEmployeesComponent,

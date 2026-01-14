@@ -11,6 +11,10 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
   standalone: true,
   templateUrl: './button.html',
   imports: [CommonModule, FontAwesomeModule],
+  host: {
+    '[class.w-full]': 'isFullWidth()',
+    '[class.flex]': 'isFullWidth()',
+  }
 })
 export class ButtonComponent {
 

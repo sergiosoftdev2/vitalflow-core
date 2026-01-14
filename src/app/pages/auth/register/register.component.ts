@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
 import { FormsModule } from '@angular/forms';
+
+import { RegisterDto } from '../../../core/api/models';
+import { ToolsService } from '../../clinics/services/tools.service';
 
 @Component({
   selector: 'app-register',
@@ -177,16 +180,32 @@ import { FormsModule } from '@angular/forms';
   `]
 })
 export class RegisterComponent {
+  private readonly authService = inject(AuthService);
+  private readonly toolsService = inject(ToolsService);
+
+
   name = '';
   email = '';
   password = '';
 
-  constructor(private authService: AuthService) {}
-
   onSubmit(e: Event) {
     e.preventDefault();
     if (this.email && this.name) {
-      this.authService.register(this.email);
+      const nameParts = this.name.split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      const userData: RegisterDto = {
+        firstName,
+        lastName,
+        email: this.email,
+        password: this.password,
+        deviceType: this.toolsService.getDeviceOS()
+      };
+      
+      this.authService.register(userData).subscribe({
+        error: (err) => console.error('Error al registrar usuario', err)
+      });
     }
   }
 }

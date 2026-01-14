@@ -19,6 +19,10 @@ export type { UsersControllerDelete$Params as UsersControllerDelete$Params } fro
 export { usersControllerDelete as usersControllerDelete } from './fn/users/users-controller-delete';
 export type { UsersControllerUpdate$Params as UsersControllerUpdate$Params } from './fn/users/users-controller-update';
 export { usersControllerUpdate as usersControllerUpdate } from './fn/users/users-controller-update';
+export type { SessionsControllerFindAll$Params as SessionsControllerFindAll$Params } from './fn/sessions/sessions-controller-find-all';
+export { sessionsControllerFindAll as sessionsControllerFindAll } from './fn/sessions/sessions-controller-find-all';
+export type { SessionsControllerRemove$Params as SessionsControllerRemove$Params } from './fn/sessions/sessions-controller-remove';
+export { sessionsControllerRemove as sessionsControllerRemove } from './fn/sessions/sessions-controller-remove';
 export type { ClinicsControllerFindAll$Params as ClinicsControllerFindAll$Params } from './fn/clinics/clinics-controller-find-all';
 export { clinicsControllerFindAll as clinicsControllerFindAll } from './fn/clinics/clinics-controller-find-all';
 export type { ClinicsControllerCreate$Params as ClinicsControllerCreate$Params } from './fn/clinics/clinics-controller-create';

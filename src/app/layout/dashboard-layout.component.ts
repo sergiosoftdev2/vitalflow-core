@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { SidebarComponent } from '../ui/sidebar/sidebar';
+import { MobileNavComponent } from '../ui/mobile-nav/mobile-nav';
 import { LayoutService } from '../services/layout.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBars, faBell } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +11,7 @@ import { faBars, faBell } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-dashboard-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent, FontAwesomeModule],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, MobileNavComponent, FontAwesomeModule],
   templateUrl: './dashboard-layout.component.html'
 })
 export class DashboardLayoutComponent implements OnInit {

@@ -21,6 +21,7 @@ export class AvatarComponent {
   size = input<COMPONENT_SIZE>(COMPONENT_SIZES.base);
   variant = input<AVATAR_VARIANT>(AVATAR_VARIANTS.circle);
   label = input<string>('');
+  hasBorder = input<boolean>(false);
   initials = input<string>('');
   viewTransitionName = input<string>('');
   isFullSize = input<boolean>(false);
@@ -41,6 +42,7 @@ export class AvatarComponent {
   containerClasses = computed(() => {
     return [
       BASE_AVATAR_CLASSES,
+      this.hasBorder() ? 'border-2 border-white dark:border-zinc-950' : '',
       this.isFullSize() ? 'w-full h-full' : AVATAR_SIZES[this.size()],
       AVATAR_VARIANT_CLASSES[this.variant()]
     ];

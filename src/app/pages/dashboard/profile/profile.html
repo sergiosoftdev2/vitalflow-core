@@ -1,24 +1,24 @@
 <app-page-container>
   
-  <header class="flex flex-col sm:flex-row items-center gap-6 mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
-    <div class="relative group">
+  <header class="flex items-center gap-4 sm:gap-6 mb-4 sm:mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
+    <div class="group">
       <app-avatar
         [src]="myProfile()?.picture || ''" 
         [alt]="myProfile()?.firstName || 'Avatar'"
-        size="2xl"
+        [size]="isMobile() ? 'lg' : '2xl'"
         [initials]="(myProfile()?.firstName?.charAt(0) || '') + (myProfile()?.lastName?.charAt(0) || '')"
         viewTransitionName="profile-avatar"
       ></app-avatar>
     </div>
-    <div class="text-center sm:text-left space-y-1">
-      <app-title size="xl" weight="bold" [label]="myProfile()?.firstName + ' ' + myProfile()?.lastName"></app-title>
-      <p class="text-zinc-500 text-base sm:text-lg max-w-md font-medium">
+    <div class="text-left">
+      <app-title [size]="isMobile() ? 'lg' : 'xl'" weight="bold" [label]="myProfile()?.firstName + ' ' + myProfile()?.lastName"></app-title>
+      <p class="text-zinc-500 text-xs sm:text-lg max-w-md font-medium">
         Bienvenido a tu centro de configuración. Aquí puedes ajustar cómo interactúas con clinily.
       </p>
     </div>
   </header>
 
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-150">
     
     @for (card of cards; track $index) {
       <app-card 
@@ -32,4 +32,9 @@
     }
 
   </section>
+
+  <section>
+    <app-button label="Cerrar sesión" [leadingIcon]="faSignOut" color="destructive" [isFullWidth]="isMobile()"></app-button>
+  </section>
+
 </app-page-container>

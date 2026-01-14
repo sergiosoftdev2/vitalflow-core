@@ -12,7 +12,7 @@ export const CLINIC_ROUTES: Routes = [
   },
   {
     path: 'clients',
-    loadComponent: () => import('./pages/clients/clients').then(m => m.ClinicClientsComponent)
+    loadComponent: () => import('./clients/clients').then(m => m.ClinicClientsComponent)
   },
   {
     path: 'employees',

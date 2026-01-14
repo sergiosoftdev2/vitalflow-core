@@ -7,5 +7,6 @@ export type { ClinicDto } from './models/clinic-dto';
 export type { LoginDto } from './models/login-dto';
 export type { RegisterDto } from './models/register-dto';
 export type { RoomDto } from './models/room-dto';
+export type { SessionDto } from './models/session-dto';
 export type { UpdateUserDto } from './models/update-user-dto';
 export type { UserDto } from './models/user-dto';

@@ -5,6 +5,12 @@ import { tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SessionService } from './session.service';
 import { User } from '../../app/interfaces/user.interface';
+import { LoginDto, RegisterDto } from '../../app/core/api/models';
+
+interface AuthResponse {
+  access_token: string;
+  user: User;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -24,24 +30,24 @@ export class AuthService {
     window.location.href = `${this.apiUrl}/auth/google`;
   }
 
-  login(credentials: any) {
-    return this.http.post<User>(`${this.apiUrl}/auth/login`, credentials).pipe(
-      tap(user => {
-        this.sessionService.setUser(user);
+  login(credentials: LoginDto) {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, credentials).pipe(
+      tap(response => {
+        this.sessionService.setUser(response.user, response.access_token);
         this.router.navigate(['/dashboard']);
       })
     );
   }
 
-  handleSocialLogin(user: User) {
-    this.sessionService.setUser(user);
+  handleSocialLogin(user: User, access_token?: string) {
+    this.sessionService.setUser(user, access_token);
     this.router.navigate(['/dashboard']);
   }
 
-  register(userData: any) {
-    return this.http.post<User>(`${this.apiUrl}/auth/register`, userData).pipe(
-      tap(user => {
-        this.sessionService.setUser(user);
+  register(userData: RegisterDto) {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/register`, userData).pipe(
+      tap(response => {
+        this.sessionService.setUser(response.user, response.access_token);
         this.router.navigate(['/dashboard']);
       })
     );

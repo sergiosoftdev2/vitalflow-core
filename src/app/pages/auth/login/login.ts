@@ -7,6 +7,8 @@ import { CardComponent } from "../../../ui/card/card";
 import { InputTextComponent } from "../../../ui/input-text/input-text";
 import { InputPasswordComponent } from "../../../ui/input-password/input-password";
 import { ButtonComponent } from "../../../ui/button/button";
+import { LoginDto } from '../../../core/api/models';
+import { ToolsService } from '../../clinics/services/tools.service';
 
 @Component({
   selector: 'app-login',
@@ -16,20 +18,30 @@ import { ButtonComponent } from "../../../ui/button/button";
 })
 export class LoginComponent implements OnInit {
   private readonly authService = inject(AuthService);
+  private readonly toolsService = inject(ToolsService);
+  private route = inject(ActivatedRoute);
   
   email = signal('');
   password = signal('');
   
-  private route = inject(ActivatedRoute);
-
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if (params['user']) {
         try {
           const user = JSON.parse(decodeURIComponent(params['user']));
-          this.authService.handleSocialLogin(user);
+
+          const token = params['token'] || 
+                        params['access_token'] || 
+                        params['accessToken'] || 
+                        params['id'];
+          
+          const tokenInsideUser = user.access_token || user.token || user.accessToken || user.id;
+
+          if (token || tokenInsideUser) {
+            this.authService.handleSocialLogin(user, token || tokenInsideUser);
+          }
         } catch (e) {
-          console.error('Error parsing user data', e);
+          console.error('Failed to parse user data from URL:', e);
         }
       }
     });
@@ -42,7 +54,13 @@ export class LoginComponent implements OnInit {
   onSubmit(e: Event) {
     if (e) e.preventDefault();
     if (this.email() && this.password()) {
-      this.authService.login({ email: this.email(), password: this.password() }).subscribe({
+      const credentials: LoginDto = {
+        email: this.email(),
+        password: this.password(),
+        deviceType: this.toolsService.getDeviceOS()
+      };
+      
+      this.authService.login(credentials).subscribe({
         error: (err) => console.error('Error al iniciar sesión', err)
       });
     }

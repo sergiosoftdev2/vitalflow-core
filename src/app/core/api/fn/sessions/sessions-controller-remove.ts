@@ -7,16 +7,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { LoginDto } from '../../models/login-dto';
 
-export interface AuthControllerLogin$Params {
-      body: LoginDto
+export interface SessionsControllerRemove$Params {
+  id: string;
 }
 
-export function authControllerLogin(http: HttpClient, rootUrl: string, params: AuthControllerLogin$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, authControllerLogin.PATH, 'post');
+export function sessionsControllerRemove(http: HttpClient, rootUrl: string, params: SessionsControllerRemove$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, sessionsControllerRemove.PATH, 'delete');
   if (params) {
-    rb.body(params.body, 'application/json');
+    rb.path('id', params.id, {});
   }
 
   return http.request(
@@ -29,4 +28,4 @@ export function authControllerLogin(http: HttpClient, rootUrl: string, params: A
   );
 }
 
-authControllerLogin.PATH = '/auth/login';
+sessionsControllerRemove.PATH = '/sessions/{id}';

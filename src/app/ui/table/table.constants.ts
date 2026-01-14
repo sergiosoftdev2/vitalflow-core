@@ -1,13 +1,13 @@
 import { OfficialColors } from "../colors.constants";
 
 export const TABLE_CONTAINER_CLASSES = `
-  relative overflow-hidden rounded-3xl border ${OfficialColors.default_border_color}
+  relative rounded-3xl border ${OfficialColors.default_border_color}
   ${OfficialColors.default_bg_color}
   transition-all duration-300 ease-in-out
 `;
 
 export const TABLE_CLASSES = `
-  w-full border-collapse text-left
+  w-full border-separate border-spacing-0 text-left
 `;
 
 export const TABLE_HEADER_CLASSES = `
@@ -16,19 +16,19 @@ export const TABLE_HEADER_CLASSES = `
 `;
 
 export const TABLE_HEADER_CELL_CLASSES = `
-  px-6 py-4 text-sm font-semibold
+  px-4 py-4 text-sm font-semibold
   ${OfficialColors.default_text_accent}
 `;
 
 export const TABLE_ROW_CLASSES = `
-  group
+  group h-12
   border-b last:border-b-0 ${OfficialColors.default_border_color}
   ${OfficialColors.default_bg_hover}
   transition-colors duration-200
 `;
 
 export const TABLE_CELL_CLASSES = `
-  px-6 py-4 text-sm cursor-pointer
+  px-4 text-sm cursor-pointer truncate
   ${OfficialColors.default_text_medium}
 `;
 

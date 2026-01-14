@@ -11,8 +11,8 @@ export class ApiService {
   private readonly apiUrl = environment.apiUrl;
   
 
-  get<T>(endpoint: string) {
-    return this.httpClient.get<T>(`${this.apiUrl}/${endpoint}`);
+  get<T>(endpoint: string, params?: any) {
+    return this.httpClient.get<T>(`${this.apiUrl}/${endpoint}`, { params });
   }
 
   set<T>(endpoint: string, data: T) {

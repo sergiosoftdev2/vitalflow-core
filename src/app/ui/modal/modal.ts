@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, output, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -48,6 +48,16 @@ export class ModalComponent {
   close = output<void>();
   primaryAction = output<void>();
   secondaryAction = output<void>();
+
+  constructor() {
+    effect(() => {
+      if (this.isOpen()) {
+        document.body.classList.add('modal-open');
+      } else {
+        document.body.classList.remove('modal-open');
+      }
+    });
+  }
 
   // Icons
   faTimes = faTimes;
@@ -109,6 +119,9 @@ export class ModalComponent {
     
     // Only allow dragging downwards
     if (deltaY > 0) {
+      if (event.cancelable) {
+        event.preventDefault(); // Evitar scroll del body y pull-to-refresh
+      }
       this.dragY.set(deltaY);
     }
   }

@@ -7,4 +7,5 @@ export interface User {
   googleId?: string;
   createdAt: string;
   updatedAt: string;
+  access_token?: string;
 }

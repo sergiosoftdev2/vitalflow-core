@@ -9,23 +9,12 @@
     [class.lg:pl-72]="layoutService.isSidebarOpen()"
   >
     
-    <!-- Mobile Header (Solo visible en móviles/tablets cuando el sidebar está cerrado) -->
-    <header class="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-30">
-      <button 
-        (click)="layoutService.openSidebar()" 
-        class="bg-white dark:bg-zinc-900 hover:bg-zinc-100 text-zinc-950 dark:text-zinc-50 dark:hover:bg-zinc-800 rounded-xl transition-colors focus:outline-none"
-      >
-        <fa-icon [icon]="faBars"></fa-icon>
-      </button>
-      
-      <h1 class="text-2xl font-bold tracking-tight text-green-900 dark:text-green-600">clini<span class="text-green-500 dark:text-green-400">ly</span></h1>
-      
-      <div class="w-9"></div> <!-- Spacer para centrar el logo -->
-    </header>
-
     <!-- Dynamic Content -->
-    <main class="flex-1 overflow-y-auto">
+    <main class="flex-1 overflow-y-auto pb-20 lg:pb-0">
       <router-outlet></router-outlet>
     </main>
+
+    <!-- Mobile Navigation (Instagram-like) -->
+    <app-mobile-nav></app-mobile-nav>
   </div>
 </div>

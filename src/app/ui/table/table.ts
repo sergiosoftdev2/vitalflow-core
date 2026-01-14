@@ -9,6 +9,7 @@ export interface TableColumn {
   type?: TableColumnType;
   sortable?: boolean;
   align?: 'left' | 'center' | 'right';
+  width?: string;
   template?: TemplateRef<any>;
 }
 
@@ -20,6 +21,9 @@ import { BadgeComponent } from '../badge/badge';
   standalone: true,
   imports: [CommonModule, AvatarComponent, BadgeComponent],
   templateUrl: './table.html',
+  host: {
+    'class': 'flex flex-col flex-1 min-h-0'
+  }
 })
 export class TableComponent {
   data = input.required<any[]>();
@@ -62,5 +66,9 @@ export class TableComponent {
       case 'right': return 'text-right';
       default: return 'text-left';
     }
+  }
+
+  trackByFn(index: number, item: any): any {
+    return item._id || item.id || index;
   }
 }

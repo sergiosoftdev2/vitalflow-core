@@ -7,10 +7,9 @@ export interface ClientDto {
   address?: string;
 
   /**
-   * The clinic this client belongs to
+   * The clinic ID this client belongs to
    */
-  clinic: {
-};
+  clinic: string;
   createdAt?: string;
   firstName: string;
   lastName: string;
